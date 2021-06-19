@@ -18,9 +18,8 @@ SQLite数据库和Android网络数据请求相关的基础知识
 
 maven { url 'https://jitpack.io' }
 
-def latest_version = 1.0.0
-
-api 'com.github.dora4:dcache-android:${latest_version}'
+def latest_version = '1.0.1'
+api "com.github.dora4:dcache-android:$latest_version"
 
 
 
