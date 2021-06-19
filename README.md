@@ -90,5 +90,3 @@ api "com.github.dora4:dcache-android:$latest_version"
    - 分页
      - DataPager
      - 基于访问者模式的数据读取
-
-# DoraCacheSample
