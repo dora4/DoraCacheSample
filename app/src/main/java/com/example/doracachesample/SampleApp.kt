@@ -1,6 +1,7 @@
 package com.example.doracachesample
 
 import android.app.Application
+import dora.db.Orm
 import dora.db.OrmConfig
 
 class SampleApp : Application() {
@@ -11,9 +12,10 @@ class SampleApp : Application() {
     }
 
     private fun initConfig() {
-        OrmConfig.Builder()
-            .database("dcache_sample")
-            .version(1)
-            .build()
+        Orm.init(this, OrmConfig.Builder()
+                .database("dcache_sample_db22")
+                .tables(Account::class.java)
+                .version(1)
+                .build())
     }
 }
