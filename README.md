@@ -19,9 +19,9 @@ SQLite数据库和Android网络数据请求相关的基础知识
 ```groovy
 maven { url 'https://jitpack.io' }
 
-def latest_version = 1.0.1
+def latest_version = '1.0.1'
 
-api 'com.github.dora4:dcache-android:${latest_version}'
+api "com.github.dora4:dcache-android:$latest_version"
 ```
 
 
