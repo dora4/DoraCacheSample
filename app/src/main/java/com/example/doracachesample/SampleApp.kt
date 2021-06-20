@@ -13,7 +13,7 @@ class SampleApp : Application() {
 
     private fun initConfig() {
         Orm.init(this, OrmConfig.Builder()
-                .database("dcache_sample_db22")
+                .database("dcache_sample")
                 .tables(Account::class.java)
                 .version(1)
                 .build())
