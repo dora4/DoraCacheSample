@@ -1,6 +1,6 @@
 ## DCache使用大全
 
-简介：一个使用在Android平台的数据缓存框架，支持将model数据从后端接口下载后，简单的配置即可自动映射到数据库，并在断网的情况下可以离线读取
+简介：一个使用在Android平台的数据缓存框架，支持将model数据从后端接口下载后，简单的配置即可自动映射到数据库，并在断网的情况下可以离线读取。
 
 
 
@@ -18,8 +18,9 @@ SQLite数据库和Android网络数据请求相关的基础知识
 
 maven { url 'https://jitpack.io' }
 
-def latest_version = '1.0.1'
-api "com.github.dora4:dcache-android:$latest_version"
+def latest_version = 1.0.0
+
+api 'com.github.dora4:dcache-android:${latest_version}'
 
 
 
@@ -27,7 +28,17 @@ api "com.github.dora4:dcache-android:$latest_version"
 
 #### 一、dcache的orm详解
 
-1. 配置初始化
+1. **配置初始化**
+
+   ```kotlin
+   Orm.init(this, OrmConfig.Builder()
+                   .database("dcache_sample")
+                   .tables(Account::class.java)
+                   .version(1)
+                   .build())
+   ```
+
+   在自定义的Application类的入口加入一行配置
 
 2. 注解详解
 
@@ -90,3 +101,5 @@ api "com.github.dora4:dcache-android:$latest_version"
    - 分页
      - DataPager
      - 基于访问者模式的数据读取
+
+# DoraCacheSample
