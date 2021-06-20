@@ -16,11 +16,13 @@ SQLite数据库和Android网络数据请求相关的基础知识
 
 #### gradle依赖配置
 
+```groovy
 maven { url 'https://jitpack.io' }
 
-def latest_version = 1.0.0
+def latest_version = 1.0.1
 
 api 'com.github.dora4:dcache-android:${latest_version}'
+```
 
 
 
@@ -38,7 +40,7 @@ api 'com.github.dora4:dcache-android:${latest_version}'
                    .build())
    ```
 
-   在自定义的Application类的入口加入一行配置
+   在自定义的Application类的入口加入一行配置，database为数据库名，version从1开始每次递增1
 
 2. 注解详解
 
@@ -52,7 +54,6 @@ api 'com.github.dora4:dcache-android:${latest_version}'
      - @Id
      - @Unique
      - @Default
-     - @Unique
 
 3. CRUD操作
 
@@ -101,5 +102,3 @@ api 'com.github.dora4:dcache-android:${latest_version}'
    - 分页
      - DataPager
      - 基于访问者模式的数据读取
-
-# DoraCacheSample
