@@ -40,26 +40,63 @@ api "com.github.dora4:dcache-android:$latest_version"
                    .build())
    ```
 
-   在自定义的Application类的入口加入一行配置，database为数据库名，version从1开始每次递增1
+   在自定义的Application类的入口加入一行配置，database为数据库名，version从1开始每次递增1，tables用来配置需要初始化的表，dcache中所有的表需要实现OrmTable接口。
 
-2. 注解详解
+2. **注解详解**
 
    - 表和列相关
      - @Table
+     
+       此注解配置在OrmTable的实现类的类名之上，用来指定一个类映射到表的名称
+     
      - @Column
+     
+       此注解配置在OrmTable的实现类的成员属性之上，用来指定一个属性映射到字段的名称
+     
      - @Ignore
+     
+       此注解的优先级高于@Column，配置在OrmTable的实现类的成员属性之上，配置了此注解的成员属性，不会作为表的字段进行映射
    - 约束相关
      - @NotNull
+     
+       此注解配置在OrmTable的实现类的成员属性之上，用来指定这个字段为非空字段
+     
      - @PrimaryKey
+     
+       此注解配置在OrmTable的实现类的成员属性之上，用来指定这个字段为表的主键
+     
      - @Id
+     
+       此注解配置在OrmTable的实现类的成员属性之上，作用类似于@PrimaryKey，并
+     
+       在它的基础上指定了该字段名为”_id“，相当于@PrimaryKey+@Column("\_id")
+     
      - @Unique
+     
+       此注解配置在OrmTable的实现类的成员属性之上，表示这个字段的值在这张表中从不重复
+     
      - @Default
+     
+       此注解配置在OrmTable的实现类的成员属性之上，通过它可以给字段指定默认值
 
 3. CRUD操作
 
    - 插入数据
 
+     ```kotlin
+     DaoFactory.getDao(Account::class.java).insert(Account(generateAccKey(),
+                         "D"+generateAccKey(), "P"+generateAccKey()))
+     ```
+
+     insert不仅可以被用来插入单条数据，也可以插入一个List数据
+
    - 删除数据
+
+     ```kotlin
+     val selectOne = DaoFactory.getDao(Account::class.java)
+                         .selectOne(QueryBuilder.create().orderBy("_id"))
+                 DaoFactory.getDao(Account::class.java).delete(selectOne)
+     ```
 
    - 更新数据
 
