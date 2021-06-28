@@ -79,7 +79,7 @@ api "com.github.dora4:dcache-android:$latest_version"
      
        此注解配置在OrmTable的实现类的成员属性之上，通过它可以给字段指定默认值
 
-3. CRUD操作
+3. **CRUD操作**
 
    - 插入数据
 
