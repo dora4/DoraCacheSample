@@ -28,8 +28,10 @@ class MainActivity : AppCompatActivity() {
         }
         btnAccRemove.setOnClickListener {
             val selectOne = DaoFactory.getDao(Account::class.java)
-                    .selectOne(QueryBuilder.create().orderBy("_id"))
-            DaoFactory.getDao(Account::class.java).delete(selectOne)
+                    .selectOne(QueryBuilder.create().orderBy(QueryBuilder.ID))
+            if (selectOne != null) {
+                DaoFactory.getDao(Account::class.java).delete(selectOne)
+            }
         }
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)

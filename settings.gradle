@@ -1,2 +1,3 @@
 include ':app'
+include ':dcache-android'
 rootProject.name = "DoraCacheSample"

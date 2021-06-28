@@ -19,6 +19,9 @@ allprojects {
         google()
         jcenter()
         maven { url 'https://jitpack.io' }
+        flatDir {
+            dirs '../dcache-android/dcache/build/outputs/aar'
+        }
     }
 }
 
