@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import dora.db.OrmTable
 import dora.db.builder.QueryBuilder
 import dora.db.dao.DaoFactory
 import java.util.*
@@ -30,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         }
         btnAccRemove.setOnClickListener {
             val selectOne = DaoFactory.getDao(Account::class.java)
-                    .selectOne(QueryBuilder.create().orderBy(QueryBuilder.ID))
+                    .selectOne(QueryBuilder.create().orderBy(OrmTable.INDEX_ID))
             if (selectOne != null) {
                 DaoFactory.getDao(Account::class.java).delete(selectOne)
             }
