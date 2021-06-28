@@ -94,20 +94,50 @@ api "com.github.dora4:dcache-android:$latest_version"
 
      ```kotlin
      val selectOne = DaoFactory.getDao(Account::class.java)
-                         .selectOne(QueryBuilder.create().orderBy("_id"))
-                 DaoFactory.getDao(Account::class.java).delete(selectOne)
+                         .selectOne(QueryBuilder.create().orderBy(QueryBuilder.ID))
+                 if (selectOne != null) {
+                     DaoFactory.getDao(Account::class.java).delete(selectOne)
+                 }
      ```
 
    - 更新数据
+
+     ```kotlin
+     DaoFactory.getDao(Account::class.java).update(Account("这个是key",
+                         "D"+generateAccKey(), "P"+generateAccKey()))
+     ```
 
    - 查询数据
 
      - Condition
 
+       selection：where子句，不带where，可以带”？“占位符
+
+       selectionArgs：”？“占位符的所有值
+
      - WhereBuilder
+
+       where子句的构建类，通过WhereBuilder.create ()创建实例
+
+       ```java
+       public WhereBuilder addWhereEqualTo(String column, Object value) {
+               return append(null, column + EQUAL_HOLDER, value);
+           }
+       ```
+
+       可以通过调用addWhereEqualTo添加key=value条件。
+
      - QueryBuilder
 
+       支持where、orderBy、limit、groupBy等
+
    - 查询记录数
+
+     ```kotlin
+     val count = DaoFactory.getDao(Account::class.java).selectCount()
+     ```
+
+     通过selectCount查询符合查询条件的记录条数。
 
 4. 其他注意事项
 

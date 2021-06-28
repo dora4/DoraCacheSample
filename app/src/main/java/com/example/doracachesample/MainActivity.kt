@@ -22,6 +22,8 @@ class MainActivity : AppCompatActivity() {
         btnAccAdd.setOnClickListener {
             DaoFactory.getDao(Account::class.java).insert(Account(generateAccKey(),
                     "D"+generateAccKey(), "P"+generateAccKey()))
+//            DaoFactory.getDao(Account::class.java).update(Account("这个是key",
+//                    "D"+generateAccKey(), "P"+generateAccKey()))
         }
         btnAccRefresh.setOnClickListener {
             refreshAccounts(adapter)
@@ -43,6 +45,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun refreshAccounts(adapter: AccountAdapter) {
+//        val count = DaoFactory.getDao(Account::class.java).selectCount()
         val accounts = DaoFactory.getDao(Account::class.java).selectAll()
         adapter.setAccounts(accounts)
     }
