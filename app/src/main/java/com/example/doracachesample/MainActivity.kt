@@ -6,6 +6,7 @@ import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dora.db.OrmTable
+import dora.db.Transaction
 import dora.db.builder.QueryBuilder
 import dora.db.dao.DaoFactory
 import java.util.*
@@ -25,15 +26,17 @@ class MainActivity : AppCompatActivity() {
                     "D"+generateAccKey(), "P"+generateAccKey()))
 //            DaoFactory.getDao(Account::class.java).update(Account("这个是key",
 //                    "D"+generateAccKey(), "P"+generateAccKey()))
+            
         }
         btnAccRefresh.setOnClickListener {
             refreshAccounts(adapter)
         }
         btnAccRemove.setOnClickListener {
-            val selectOne = DaoFactory.getDao(Account::class.java)
-                    .selectOne(QueryBuilder.create().orderBy(OrmTable.INDEX_ID))
-            if (selectOne != null) {
-                DaoFactory.getDao(Account::class.java).delete(selectOne)
+            Transaction.execute(Account::class.java) {
+                val selectOne = it.selectOne(QueryBuilder.create().orderBy(OrmTable.INDEX_ID))
+                if (selectOne != null) {
+                    it.delete(selectOne)
+                }
             }
         }
         recyclerView.adapter = adapter

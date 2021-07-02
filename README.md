@@ -142,8 +142,38 @@ api "com.github.dora4:dcache-android:$latest_version"
 4. 其他注意事项
 
    - 复杂数据类型字段映射
+   
+     ```java
+     @Convert(converter = StringListConverter.class, columnType = String.class)
+     @Column("acc_child_values")
+     private List<String> accChildValues;
+     ```
+   
+     使用@Convert注解可以保存复杂的数据类型，例如ArrayList，一般将复杂数据类型转成格式化后的字符串类型保存到数据库，读取数据的时候进行自动解码操作。converter类型转换器可以自行定义，columnType为你保存到数据库的实际数据类型。
+   
    - 表结构升级
+   
+     ```java
+       @Override
+       public boolean isUpgradeRecreated() {
+           return false;
+       }
+     ```
+   
+     只需要在配置中将数据库版本提升1，即可自动进行表结构的升级。在OrmTable的实现类重写isUpgradeRecreated()来确定表升级后是否要清空之前保存的数据，如果return true，则在表升级后将数据清空。
+   
    - 事务操作
+   
+     ```kotlin
+     Transaction.execute(Account::class.java) {
+                     val selectOne = 			it.selectOne(QueryBuilder.create().orderBy(OrmTable.INDEX_ID))
+                     if (selectOne != null) {
+                         it.delete(selectOne)
+                     }
+                 }
+     ```
+   
+     使用Transaction.execute()可以在代码块中执行事务操作，it指代的是OrmDao&lt;Account&gt;。
 
 #### 二、网络数据的读取和解析
 

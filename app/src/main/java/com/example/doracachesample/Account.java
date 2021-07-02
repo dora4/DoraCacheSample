@@ -1,15 +1,18 @@
 package com.example.doracachesample;
 
+import java.util.List;
+
 import dora.db.OrmTable;
 import dora.db.PrimaryKeyEntity;
 import dora.db.PrimaryKeyId;
-import dora.db.constraint.AssignType;
 import dora.db.constraint.Default;
 import dora.db.constraint.NotNull;
-import dora.db.constraint.PrimaryKey;
 import dora.db.constraint.Unique;
+import dora.db.converter.StringListConverter;
 import dora.db.table.Column;
+import dora.db.table.Convert;
 import dora.db.table.Id;
+import dora.db.table.Ignore;
 import dora.db.table.Table;
 
 @Table("acc")
@@ -31,6 +34,11 @@ public class Account implements OrmTable {
     @NotNull
     @Column("acc_value")
     private String accValue;
+
+//    @Ignore
+    @Convert(converter = StringListConverter.class, columnType = String.class)
+    @Column("acc_child_values")
+    private List<String> accChildValues;
 
     /**
      * 务必保留，框架要求无参构造方法
@@ -75,6 +83,14 @@ public class Account implements OrmTable {
 
     public void setAccValue(String accValue) {
         this.accValue = accValue;
+    }
+
+    public List<String> getAccChildValues() {
+        return accChildValues;
+    }
+
+    public void setAccChildValues(List<String> accChildValues) {
+        this.accChildValues = accChildValues;
     }
 
     @Override
