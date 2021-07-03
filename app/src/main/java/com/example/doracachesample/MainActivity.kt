@@ -6,6 +6,7 @@ import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dora.db.OrmTable
+import dora.db.TableManager
 import dora.db.Transaction
 import dora.db.builder.QueryBuilder
 import dora.db.dao.DaoFactory
