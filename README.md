@@ -1,4 +1,4 @@
-# DoraCache使用文档![Release](https://jitpack.io/v/dora4/dcache-android.svg)
+# DoraCache使用文档V1.0.3
 
 简介：一个使用在Android平台的数据缓存框架，支持将model数据从后端接口下载后，简单的配置即可自动映射到数据库，并在断网的情况下可以离线读取。
 
@@ -19,7 +19,7 @@ SQLite数据库和Android网络数据请求相关的基础知识
 ```groovy
 maven { url 'https://jitpack.io' }
 
-def latest_version = '1.0.3'
+def latest_version = 'x.x.x'
 
 api "com.github.dora4:dcache-android:$latest_version"
 ```
@@ -142,7 +142,7 @@ api "com.github.dora4:dcache-android:$latest_version"
 
      通过selectCount查询符合查询条件的记录条数。
 
-4. 其他注意事项
+4. **其他注意事项**
 
    - 复杂数据类型字段映射
 
@@ -180,7 +180,7 @@ api "com.github.dora4:dcache-android:$latest_version"
 
 #### 二、网络数据的读取和解析
 
-1. 自定义RetrofitManager
+1. **配置和使用**
 
    - 按模块对接口进行分类
 
@@ -225,10 +225,10 @@ api "com.github.dora4:dcache-android:$latest_version"
              // 方式一：并行请求，直接调用即可
              DoraRetrofitManager.getService(AccountService::class.java).getAccount()
                      .enqueue(object : DoraCallback<Account>() {
-
+  
                          override fun onFailure(code: Int, msg: String?) {
                          }
-
+  
                          override fun onSuccess(data: Account) {
                          }
                      })
@@ -243,9 +243,9 @@ api "com.github.dora4:dcache-android:$latest_version"
              }
      ```
 
-2. DoraCallback和DoraListCallback
+2. **其它注意事项**
 
-   这两个回调接口扩展自retrofit2.Callback，DoraListCallback用于集合数据的回调。
+   DoraCallback和DoraListCallback这两个回调接口扩展自retrofit2.Callback，DoraListCallback用于集合数据的回调。
 
 #### 三、repository的使用
 
