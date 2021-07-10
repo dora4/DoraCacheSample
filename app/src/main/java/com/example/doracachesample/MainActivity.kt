@@ -9,11 +9,6 @@ import dora.db.OrmTable
 import dora.db.Transaction
 import dora.db.builder.QueryBuilder
 import dora.db.dao.DaoFactory
-import dora.http.DoraCallback
-import dora.http.DoraHttp.api
-import dora.http.DoraHttp.net
-import dora.http.DoraHttp.request
-import dora.http.retrofit.DoraRetrofitManager
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -63,24 +58,24 @@ class MainActivity : AppCompatActivity() {
 //        DoraRetrofitManager.client.interceptors
 //        DoraRetrofitManager.client.networkInterceptors
 
-        // 方式一：并行请求，直接调用即可
-        DoraRetrofitManager.getService(AccountService::class.java).getAccount()
-                .enqueue(object : DoraCallback<Account>() {
-
-                    override fun onFailure(code: Int, msg: String?) {
-                    }
-
-                    override fun onSuccess(data: Account) {
-                    }
-                })
-        // 方式二：串行请求，在net作用域内的api请求，可以很方便的进行数据的合并处理，推荐使用
-        net {
-            val account1 = api {
-                DoraRetrofitManager.getService(AccountService::class.java).getAccount()
-            }
-            val account2 = api {
-                DoraRetrofitManager.getService(AccountService::class.java).getAccount()
-            }
-        }
+//        // 方式一：并行请求，直接调用即可
+//        DoraRetrofitManager.getService(AccountService::class.java).getAccount()
+//                .enqueue(object : DoraCallback<Account>() {
+//
+//                    override fun onFailure(code: Int, msg: String?) {
+//                    }
+//
+//                    override fun onSuccess(data: Account) {
+//                    }
+//                })
+//        // 方式二：串行请求，在net作用域内的api请求，可以很方便的进行数据的合并处理，推荐使用
+//        net {
+//            val account1 = api {
+//                DoraRetrofitManager.getService(AccountService::class.java).getAccount()
+//            }
+//            val account2 = api {
+//                DoraRetrofitManager.getService(AccountService::class.java).getAccount()
+//            }
+//        }
     }
 }
