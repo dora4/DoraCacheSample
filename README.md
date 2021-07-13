@@ -251,7 +251,7 @@ api "com.github.dora4:dcache-android:$latest_version"
    
      首先这三个方法都需要在net作用域下执行，net作用域下的请求是串行执行的。
    
-     request：用来自己执行网络请求，比如自己自己使用okhttp进行请求。
+     request：用来自己执行网络请求，比如自己使用okhttp进行请求。
    
      api：使用DoraRetrofitManager请求，如果执行失败，会抛出异常，你需要捕获DoraHttpException来查看异常信息。
    
