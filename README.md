@@ -1,4 +1,4 @@
-# DoraCache使用文档V1.0.3
+# DoraCache使用文档V1.0.4
 
 简介：一个使用在Android平台的数据缓存框架，支持将model数据从后端接口下载后，简单的配置即可自动映射到数据库，并在断网的情况下可以离线读取。
 
@@ -225,10 +225,10 @@ api "com.github.dora4:dcache-android:$latest_version"
              // 方式一：并行请求，直接调用即可
              DoraRetrofitManager.getService(AccountService::class.java).getAccount()
                      .enqueue(object : DoraCallback<Account>() {
-  
+    
                          override fun onFailure(code: Int, msg: String?) {
                          }
-  
+    
                          override fun onSuccess(data: Account) {
                          }
                      })
@@ -237,7 +237,7 @@ api "com.github.dora4:dcache-android:$latest_version"
                  val account1 = api {
                      DoraRetrofitManager.getService(AccountService::class.java).getAccount()
                  }
-                 val account2 = api {
+                 val account2 = result {
                      DoraRetrofitManager.getService(AccountService::class.java).getAccount()
                  }
              }
@@ -245,7 +245,59 @@ api "com.github.dora4:dcache-android:$latest_version"
 
 2. **其它注意事项**
 
-   DoraCallback和DoraListCallback这两个回调接口扩展自retrofit2.Callback，DoraListCallback用于集合数据的回调。
+   - DoraCallback和DoraListCallback这两个回调接口扩展自retrofit2.Callback，DoraListCallback可以方便用于集合数据的回调。
+   
+   - net作用域下request、api和result的区别
+   
+     首先这三个方法都需要在net作用域下执行，net作用域下的请求是串行执行的。
+   
+     request：用来自己执行网络请求，比如自己自己使用okhttp进行请求。
+   
+     api：使用DoraRetrofitManager请求，如果执行失败，会抛出异常，你需要捕获DoraHttpException来查看异常信息。
+   
+     ```kotlin
+     val testRequest = try {
+                     api {
+                         DoraRetrofitManager
+                                 .getService(TestService::class.java).testRequest()
+                     }
+                 } catch (e: DoraHttpException) {
+                     Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show()
+                 }
+     ```
+   
+     result：使用DoraRetrofitManager请求，如果执行失败，则会返回null。
+   
+     ```kotlin
+     val testRequest3 = result {
+                     DoraRetrofitManager
+                             .getService(TestService::class.java).testRequest()
+                 }
+     ```
+   
+     我们来看看整体的代码。
+   
+     ```kotlin
+     net {
+                 val testRequest = try {
+                     api {
+                         DoraRetrofitManager
+                                 .getService(TestService::class.java).testRequest()
+                     }
+                 } catch (e: DoraHttpException) {
+                     Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show()
+                 }
+                 val testRequest2 = api {
+                     DoraRetrofitManager
+                             .getService(TestService::class.java).testRequest()
+                 }
+                 val testRequest3 = result {
+                     DoraRetrofitManager
+                             .getService(TestService::class.java).testRequest()
+                 }
+                 Toast.makeText(this, "$testRequest--$testRequest2--$testRequest3", Toast.LENGTH_SHORT).show()
+             }
+     ```
 
 #### 三、repository的使用
 

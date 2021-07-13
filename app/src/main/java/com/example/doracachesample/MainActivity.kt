@@ -3,12 +3,19 @@ package com.example.doracachesample
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.doracachesample.httpresult.TestService
 import dora.db.OrmTable
 import dora.db.Transaction
 import dora.db.builder.QueryBuilder
 import dora.db.dao.DaoFactory
+import dora.http.DoraHttp.api
+import dora.http.DoraHttp.net
+import dora.http.DoraHttp.result
+import dora.http.DoraHttpException
+import dora.http.retrofit.DoraRetrofitManager
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -23,10 +30,10 @@ class MainActivity : AppCompatActivity() {
         val adapter = AccountAdapter()
         btnAccAdd.setOnClickListener {
             DaoFactory.getDao(Account::class.java).insert(Account(generateAccKey(),
-                    "D"+generateAccKey(), "P"+generateAccKey()))
+                    "D" + generateAccKey(), "P" + generateAccKey()))
 //            DaoFactory.getDao(Account::class.java).update(Account("这个是key",
 //                    "D"+generateAccKey(), "P"+generateAccKey()))
-            
+
         }
         btnAccRefresh.setOnClickListener {
             refreshAccounts(adapter)
@@ -44,7 +51,7 @@ class MainActivity : AppCompatActivity() {
         refreshAccounts(adapter)
     }
 
-    private fun generateAccKey() : String {
+    private fun generateAccKey(): String {
         return UUID.randomUUID().toString()
     }
 
@@ -52,6 +59,26 @@ class MainActivity : AppCompatActivity() {
 //        val count = DaoFactory.getDao(Account::class.java).selectCount()
         val accounts = DaoFactory.getDao(Account::class.java).selectAll()
         adapter.setAccounts(accounts)
+        DoraRetrofitManager.registerBaseUrl(TestService::class.java, "http://api.k780.com")
+        net {
+            val testRequest = try {
+                api {
+                    DoraRetrofitManager
+                            .getService(TestService::class.java).testRequest()
+                }
+            } catch (e: DoraHttpException) {
+                Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show()
+            }
+            val testRequest2 = api {
+                DoraRetrofitManager
+                        .getService(TestService::class.java).testRequest()
+            }
+            val testRequest3 = result {
+                DoraRetrofitManager
+                        .getService(TestService::class.java).testRequest()
+            }
+            Toast.makeText(this, "$testRequest--$testRequest2--$testRequest3", Toast.LENGTH_SHORT).show()
+        }
 //        DoraRetrofitManager.registerBaseUrl(AccountService::class.java, "http://github.com/dora4/")
 //        DoraRetrofitManager.client.authenticator
 //        DoraRetrofitManager.client.cookieJar
