@@ -188,36 +188,50 @@ api "com.github.dora4:dcache-android:$latest_version"
 
    - 基本配置
 
-     - URL配置
+     - URL和OkHttpClient的配置
 
-       你可以使用DoraRetrofitManager进行简单的配置发起网络请求，通过registerBaseUrl进行url和服务的注册。
+       - Kotlin配置
 
-       ```kotlin
-               DoraRetrofitManager.registerBaseUrl(AccountService::class.java, "http://github.com/dora4/").registerBaseUrl(AccountServiceV2::class.java, "http://github.com/dora4/dcache-android")
-       ```
+         你可以通过调用DoraRetrofitManager的init方法进行网络请求的相关配置。
 
-       也可以通过扩展BaseRetrofitManager来进行url和服务的注册。
+         ```kotlin
+             DoraRetrofitManager.init {
+                     okhttp {
+                         authenticator(Authenticator.NONE)
+                         cookieJar(CookieJar.NO_COOKIES)
+                       	// add返回值是boolean，所以调用了networkInterceptors还需要返回this
+                         networkInterceptors().add(FormatLogInterceptor())
+                         this
+                     }
+                     registerBaseUrl(TestService::class.java, "http://api.k780.com")
+               			registerBaseUrl(AccountService::class.java, "http://github.com/dora4")
+                 }
+         ```
 
-     - OkHttpClient配置
+         也可以通过扩展BaseRetrofitManager来进行url和服务的注册。
 
-       DoraRetrofitManager直接可以获取到client对象。
+       - Java配置
 
-       ```kotlin
-       val authenticator = DoraRetrofitManager.client.authenticator
-       val cookieJar = DoraRetrofitManager.client.cookieJar
-       val interceptors = DoraRetrofitManager.client.interceptors
-       val networkInterceptors = DoraRetrofitManager.client.networkInterceptors
-       ```
+         ```java
+         // 配置client
+         DoraRetrofitManager.INSTANCE.setClient(new OkHttpClient());
+         // 配置url
+         DoraRetrofitManager.INSTANCE.getConfig()
+                     .registerBaseUrl(TestService.class, "http://api.k780.com")
+                     .registerBaseUrl(AccountService.class, "http://github.com/dora4");
+         ```
 
-       - 拦截器配置
+         
 
-         - Token拦截器
+     - 拦截器配置
 
-           你可以直接给DoraRetrofitManager的client添加一个token拦截器来拦截token。
+       - Token拦截器
 
-         - 格式化输出响应数据到日志
+         你可以直接给DoraRetrofitManager的client添加一个token拦截器来拦截token。
 
-           你可以添加dora.http.log.FormatLogInterceptor来将响应数据以日志形式格式化输出。
+       - 格式化输出响应数据到日志
+
+         你可以添加dora.http.log.FormatLogInterceptor来将响应数据以日志形式格式化输出。
 
    - 开始使用
 
@@ -225,10 +239,10 @@ api "com.github.dora4:dcache-android:$latest_version"
              // 方式一：并行请求，直接调用即可
              DoraRetrofitManager.getService(AccountService::class.java).getAccount()
                      .enqueue(object : DoraCallback<Account>() {
-    
+      
                          override fun onFailure(code: Int, msg: String?) {
                          }
-    
+      
                          override fun onSuccess(data: Account) {
                          }
                      })

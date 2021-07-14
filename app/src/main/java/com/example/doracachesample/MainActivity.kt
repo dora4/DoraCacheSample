@@ -15,8 +15,15 @@ import dora.http.DoraHttp.api
 import dora.http.DoraHttp.net
 import dora.http.DoraHttp.result
 import dora.http.DoraHttpException
+import dora.http.log.FormatLogInterceptor
+import dora.http.retrofit.BaseRetrofitManager
 import dora.http.retrofit.DoraRetrofitManager
+import okhttp3.Authenticator
+import okhttp3.CookieJar
+import okhttp3.Interceptor
+import okhttp3.OkHttpClient
 import java.util.*
+import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
 
@@ -59,7 +66,16 @@ class MainActivity : AppCompatActivity() {
 //        val count = DaoFactory.getDao(Account::class.java).selectCount()
         val accounts = DaoFactory.getDao(Account::class.java).selectAll()
         adapter.setAccounts(accounts)
-        DoraRetrofitManager.registerBaseUrl(TestService::class.java, "http://api.k780.com")
+        DoraRetrofitManager.init {
+            okhttp {
+                authenticator(Authenticator.NONE)
+                cookieJar(CookieJar.NO_COOKIES)
+                networkInterceptors().add(FormatLogInterceptor())
+                this
+            }
+            registerBaseUrl(TestService::class.java, "http://api.k780.com")
+            registerBaseUrl(AccountService::class.java, "http://github.com/dora4")
+        }
         net {
             val testRequest = try {
                 api {
