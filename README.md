@@ -97,7 +97,7 @@ api "com.github.dora4:dcache-android:$latest_version"
 
      ```kotlin
      val selectOne = DaoFactory.getDao(Account::class.java)
-                         .selectOne(QueryBuilder.create().orderBy(QueryBuilder.ID))
+                         .selectOne(QueryBuilder.create().orderBy(OrmTable.INDEX_ID))
                  if (selectOne != null) {
                      DaoFactory.getDao(Account::class.java).delete(selectOne)
                  }
@@ -280,7 +280,7 @@ api "com.github.dora4:dcache-android:$latest_version"
                  }
      ```
    
-     result：使用DoraRetrofitManager请求，如果执行失败，则会返回null。
+     result：使用DoraRetrofitManager请求，如果执行失败，直接返回null，不会抛出异常。
    
      ```kotlin
      val testRequest3 = result {
