@@ -4,9 +4,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.doracachesample.httpresult.TestService
+import dora.cache.data.page.DataPager
+import dora.cache.data.page.PageCallback
+import dora.cache.data.visitor.DefaultPageDataVisitor
 import dora.db.OrmTable
 import dora.db.Transaction
 import dora.db.builder.QueryBuilder
@@ -35,6 +39,17 @@ class MainActivity : AppCompatActivity() {
         val btnAccRefresh = findViewById<Button>(R.id.btnAccRefresh)
         val btnAccRemove = findViewById<Button>(R.id.btnAccRemove)
         val adapter = AccountAdapter()
+        val repository = AccountRepository(this, Account::class.java)
+        repository.fetchListData().observe(this,
+            Observer<List<Account>> {
+
+            })
+        val pager = repository.obtainPager()
+        pager.setPageCallback(object : PageCallback<Account> {
+            override fun onResult(model: List<Account>) {
+            }
+        })
+        DefaultPageDataVisitor<Account>().visitDataPager(pager)
         btnAccAdd.setOnClickListener {
             DaoFactory.getDao(Account::class.java).insert(Account(generateAccKey(),
                     "D" + generateAccKey(), "P" + generateAccKey()))

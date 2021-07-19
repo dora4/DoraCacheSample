@@ -315,17 +315,99 @@ api "com.github.dora4:dcache-android:$latest_version"
 
 #### 三、repository的使用
 
-1. 数据缓存的设计思维
-2. BaseRepository和@Repository
-3. 本地缓存数据处理
+1. **数据缓存的设计思维**
+
+   通常所说的数据缓存包括数据库缓存和内存缓存两种。内存缓存是指以内存保存的数据优先，而数据库缓存指以数据保存的数据优先。内存缓存的整体逻辑是，在app冷启动的时候，从数据库加载数据到内存，然后全局共享数据，网络请求返回新的数据后，会同时更新内存中缓存的数据和数据库缓存的数据，以内存保存的数据为准，数据库保存的数据只用在下一次app冷启动的预加载。而数据库缓存的整体逻辑是，在有网络连接的情况下请求数据将数据显示在界面上，并缓存到数据库，在断网的情况下，则从数据库中取离线数据。
+
+2. **@Repository和BaseRepository**
+
+   并不是所有Repository类都需要手动配置@Repository注解，只有在不使用缺省值时需要配置。isListData，如果修改为false，则表示这个Repository被用来缓存非集合数据。而BaseRepository为所有数据缓存逻辑的基类，数据缓存流程控制在其子类实现。
+
+3. **使用示例**
+
+   ```kotlin
+       val repository = AccountRepository(this, Account::class.java)
+           repository.fetchListData().observe(this,
+               Observer<List<Account>> {
+   
+               })
+   ```
+
+   如果设置了isListData为false，则应该调用fetchData。
+
+4. **本地缓存数据处理**
+
    - 过滤
      - DataFetcher
+     
+       fetch非集合类型数据的实现类。
+     
      - ListDataFetcher
+     
+       fetch集合类型数据的实现类。
    - 分页
      - DataPager
+     
+       在将数据加载到界面前，用它来对数据进行分页。
+     
      - 基于访问者模式的数据读取
+     
+       ```kotlin
+       				// 从Repository中获取分页器，仅限集合数据模式
+               val pager = repository.obtainPager()
+       				// 设置分页数据结果的回调
+               pager.setPageCallback(object : PageCallback<Account> {
+                   override fun onResult(model: List<Account>) {
+                   }
+               })
+       				// 使用默认的分页访问者访问数据
+               DefaultPageDataVisitor<Account>().visitDataPager(pager)
+       ```
 
-#### 四、感谢作者
+5. 整合ORM框架
+
+   通常情况下，在一个已经成型的项目，更换ORM框架抛开开发成本先不说，风险也是很大的。所以这里提供了一种无缝衔接主流orm框架的接口CacheFactory和ListCacheFactory。顾名思义，ListCacheFactory用于集合数据模式下的Repository。默认Repository采用的orm框架是内置的dora-db，如果你使用dora-db，你就无须考虑整合orm框架的问题。如果你用的是市面上主流的orm框架，比如greendao、ormlite或是realm，甚至是room，你就需要自己更换CacheFactory了。以下提供和dora-db整合的源代码，你可以参考它进行整合。
+
+   ```kotlin
+   abstract class DoraDatabaseCacheRepository<T: OrmTable>(context: Context, private val ormClass: Class<T>)
+       : BaseDatabaseCacheRepository<T>(context, ormClass) {
+   
+       override fun createCacheFactory(): CacheFactory<T> {
+           return DoraCacheFactory<T, T>(ormClass)
+       }
+   
+       override fun createListCacheFactory(): CacheFactory<List<T>> {
+           return DoraListCacheFactory<T, T>(ormClass)
+       }
+   }
+   ```
+
+   ```kotlin
+   class DoraListCacheFactory<M, T : OrmTable>(var clazz: Class<out OrmTable>) : ListCacheFactory<M>() {
+   
+       lateinit var dao: OrmDao<T>
+   
+       override fun queryCache(condition: Condition): List<M>? {
+           return dao.select(WhereBuilder.create(condition)) as List<M>?
+       }
+   
+       override fun removeOldCache(condition: Condition) {
+           dao.delete(WhereBuilder.create(condition))
+       }
+   
+       override fun init() {
+           dao = DaoFactory.getDao(clazz) as OrmDao<T>
+       }
+   
+       override fun addNewCache(model: List<M>) {
+           dao.insert(model as List<T>)
+       }
+   }
+   ```
+
+   
+
+#### 四、支持开源项目
 
 如果帮您节省了大量的开发时间，对您有所帮助，欢迎您的赞赏！
 
@@ -336,3 +418,8 @@ api "com.github.dora4:dcache-android:$latest_version"
 | 柚子(EOS)      | doramusic123                               | TAG中直接填写你的github用户名                               |
 | USDT(TRC-20链) | TYVXzqctSSPSTeVPYg7i7qbEtSxwrAJQ5y         | 发送你的钱包地址和github用户名至邮箱dora924666990@gmail.com |
 | 以太坊(ETH)    | 0x5dA12D7DB7B5D6C8D2Af78723F6dCE4A3C89caB9 | 发送你的钱包地址和github用户名至邮箱dora924666990@gmail.com |
+
+捐赠价值大于等于1 EOS 或 5 USDT 或 0.003 ETH 即可加入到开源项目开发团队，一起为dcache的发展而努力。加入SSH key，请发送你的github用户名，以及你的SSH key至邮箱dora924666990@gmail.com，被采纳的提交将有机会获得EOS的奖励，具体方案待定。
+
+注：所有捐赠的虚拟货币被存放在单独的账户中，将用于奖励未来的代码贡献者。
+
