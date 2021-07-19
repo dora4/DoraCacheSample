@@ -364,7 +364,7 @@ api "com.github.dora4:dcache-android:$latest_version"
                DefaultPageDataVisitor<Account>().visitDataPager(pager)
        ```
 
-5. 整合ORM框架
+5. **整合ORM框架**
 
    通常情况下，在一个已经成型的项目，更换ORM框架抛开开发成本先不说，风险也是很大的。所以这里提供了一种无缝衔接主流orm框架的接口CacheFactory和ListCacheFactory。顾名思义，ListCacheFactory用于集合数据模式下的Repository。默认Repository采用的orm框架是内置的dora-db，如果你使用dora-db，你就无须考虑整合orm框架的问题。如果你用的是市面上主流的orm框架，比如greendao、ormlite或是realm，甚至是room，你就需要自己更换CacheFactory了。以下提供和dora-db整合的源代码，你可以参考它进行整合。
 
