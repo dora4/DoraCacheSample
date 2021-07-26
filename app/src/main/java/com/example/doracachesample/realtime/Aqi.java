@@ -27,4 +27,11 @@ public class Aqi {
          return usa;
      }
 
+    @Override
+    public String toString() {
+        return "Aqi{" +
+                "chn=" + chn +
+                ", usa=" + usa +
+                '}';
+    }
 }

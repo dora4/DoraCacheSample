@@ -12,13 +12,13 @@ import java.util.Date;
  */
 public class Astro {
 
-    private Date date;
+    private String date;
     private Sunrise sunrise;
     private Sunset sunset;
-    public void setDate(Date date) {
+    public void setDate(String date) {
          this.date = date;
      }
-     public Date getDate() {
+     public String getDate() {
          return date;
      }
 
@@ -36,4 +36,12 @@ public class Astro {
          return sunset;
      }
 
+    @Override
+    public String toString() {
+        return "Astro{" +
+                "date='" + date + '\'' +
+                ", sunrise=" + sunrise +
+                ", sunset=" + sunset +
+                '}';
+    }
 }

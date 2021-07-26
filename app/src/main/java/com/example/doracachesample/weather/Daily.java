@@ -132,4 +132,24 @@ public class Daily {
          return life_index;
      }
 
+    @Override
+    public String toString() {
+        return "Daily{" +
+                "status='" + status + '\'' +
+                ", astro=" + astro +
+                ", precipitation=" + precipitation +
+                ", temperature=" + temperature +
+                ", wind=" + wind +
+                ", humidity=" + humidity +
+                ", cloudrate=" + cloudrate +
+                ", pressure=" + pressure +
+                ", visibility=" + visibility +
+                ", dswrf=" + dswrf +
+                ", air_quality=" + air_quality +
+                ", skycon=" + skycon +
+                ", skycon_08h_20h=" + skycon_08h_20h +
+                ", skycon_20h_32h=" + skycon_20h_32h +
+                ", life_index=" + life_index +
+                '}';
+    }
 }

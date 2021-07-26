@@ -28,4 +28,11 @@ public class Air_quality {
          return pm25;
      }
 
+    @Override
+    public String toString() {
+        return "Air_quality{" +
+                "aqi=" + aqi +
+                ", pm25=" + pm25 +
+                '}';
+    }
 }

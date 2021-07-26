@@ -12,13 +12,13 @@ import java.util.Date;
  */
 public class Comfort {
 
-    private Date date;
+    private String date;
     private String index;
     private String desc;
-    public void setDate(Date date) {
+    public void setDate(String date) {
          this.date = date;
      }
-     public Date getDate() {
+     public String getDate() {
          return date;
      }
 
@@ -36,4 +36,12 @@ public class Comfort {
          return desc;
      }
 
+    @Override
+    public String toString() {
+        return "Comfort{" +
+                "date='" + date + '\'' +
+                ", index='" + index + '\'' +
+                ", desc='" + desc + '\'' +
+                '}';
+    }
 }

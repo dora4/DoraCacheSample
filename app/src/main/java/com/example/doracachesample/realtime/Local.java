@@ -35,4 +35,12 @@ public class Local {
          return intensity;
      }
 
+    @Override
+    public String toString() {
+        return "Local{" +
+                "status='" + status + '\'' +
+                ", datasource='" + datasource + '\'' +
+                ", intensity=" + intensity +
+                '}';
+    }
 }

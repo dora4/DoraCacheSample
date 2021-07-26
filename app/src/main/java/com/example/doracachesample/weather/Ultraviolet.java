@@ -12,28 +12,16 @@ import java.util.Date;
  */
 public class Ultraviolet {
 
-    private Date date;
+    private String date;
     private String index;
     private String desc;
-    public void setDate(Date date) {
-         this.date = date;
-     }
-     public Date getDate() {
-         return date;
-     }
 
-    public void setIndex(String index) {
-         this.index = index;
-     }
-     public String getIndex() {
-         return index;
-     }
-
-    public void setDesc(String desc) {
-         this.desc = desc;
-     }
-     public String getDesc() {
-         return desc;
-     }
-
+    @Override
+    public String toString() {
+        return "Ultraviolet{" +
+                "date='" + date + '\'' +
+                ", index='" + index + '\'' +
+                ", desc='" + desc + '\'' +
+                '}';
+    }
 }

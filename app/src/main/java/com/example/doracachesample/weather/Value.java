@@ -13,18 +13,12 @@ public class Value {
 
     private int chn;
     private int usa;
-    public void setChn(int chn) {
-         this.chn = chn;
-     }
-     public int getChn() {
-         return chn;
-     }
 
-    public void setUsa(int usa) {
-         this.usa = usa;
-     }
-     public int getUsa() {
-         return usa;
-     }
-
+    @Override
+    public String toString() {
+        return "Value{" +
+                "chn=" + chn +
+                ", usa=" + usa +
+                '}';
+    }
 }

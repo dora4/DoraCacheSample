@@ -27,4 +27,11 @@ public class Min {
          return usa;
      }
 
+    @Override
+    public String toString() {
+        return "Min{" +
+                "chn=" + chn +
+                ", usa=" + usa +
+                '}';
+    }
 }

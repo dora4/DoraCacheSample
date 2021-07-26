@@ -12,14 +12,14 @@ import java.util.Date;
  */
 public class Aqi {
 
-    private Date date;
+    private String date;
     private Max max;
     private Avg avg;
     private Min min;
-    public void setDate(Date date) {
+    public void setDate(String date) {
          this.date = date;
      }
-     public Date getDate() {
+     public String getDate() {
          return date;
      }
 
@@ -44,4 +44,13 @@ public class Aqi {
          return min;
      }
 
+    @Override
+    public String toString() {
+        return "Aqi{" +
+                "date='" + date + '\'' +
+                ", max=" + max +
+                ", avg=" + avg +
+                ", min=" + min +
+                '}';
+    }
 }

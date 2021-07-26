@@ -27,4 +27,11 @@ public class Description {
          return chn;
      }
 
+    @Override
+    public String toString() {
+        return "Description{" +
+                "usa='" + usa + '\'' +
+                ", chn='" + chn + '\'' +
+                '}';
+    }
 }

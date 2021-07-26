@@ -12,36 +12,18 @@ import java.util.Date;
  */
 public class Pm25 {
 
-    private Date date;
-    private int max;
-    private int avg;
-    private int min;
-    public void setDate(Date date) {
-         this.date = date;
-     }
-     public Date getDate() {
-         return date;
-     }
+    private String date;
+    private double max;
+    private double avg;
+    private double min;
 
-    public void setMax(int max) {
-         this.max = max;
-     }
-     public int getMax() {
-         return max;
-     }
-
-    public void setAvg(int avg) {
-         this.avg = avg;
-     }
-     public int getAvg() {
-         return avg;
-     }
-
-    public void setMin(int min) {
-         this.min = min;
-     }
-     public int getMin() {
-         return min;
-     }
-
+    @Override
+    public String toString() {
+        return "Pm25{" +
+                "date='" + date + '\'' +
+                ", max=" + max +
+                ", avg=" + avg +
+                ", min=" + min +
+                '}';
+    }
 }

@@ -59,4 +59,15 @@ public class Result {
          return forecast_keypoint;
      }
 
+    @Override
+    public String toString() {
+        return "Result{" +
+                "realtime=" + realtime +
+                ", minutely=" + minutely +
+                ", hourly=" + hourly +
+                ", daily=" + daily +
+                ", primary=" + primary +
+                ", forecast_keypoint='" + forecast_keypoint + '\'' +
+                '}';
+    }
 }

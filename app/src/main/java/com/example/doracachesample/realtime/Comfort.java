@@ -27,4 +27,11 @@ public class Comfort {
          return desc;
      }
 
+    @Override
+    public String toString() {
+        return "Comfort{" +
+                "index=" + index +
+                ", desc='" + desc + '\'' +
+                '}';
+    }
 }

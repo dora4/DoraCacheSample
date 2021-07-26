@@ -14,6 +14,7 @@ public class Nearest {
     private String status;
     private int distance;
     private int intensity;
+
     public void setStatus(String status) {
          this.status = status;
      }
@@ -35,4 +36,12 @@ public class Nearest {
          return intensity;
      }
 
+    @Override
+    public String toString() {
+        return "Nearest{" +
+                "status='" + status + '\'' +
+                ", distance=" + distance +
+                ", intensity=" + intensity +
+                '}';
+    }
 }

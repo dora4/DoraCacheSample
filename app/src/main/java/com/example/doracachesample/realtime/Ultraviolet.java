@@ -27,4 +27,11 @@ public class Ultraviolet {
          return desc;
      }
 
+    @Override
+    public String toString() {
+        return "Ultraviolet{" +
+                "index=" + index +
+                ", desc='" + desc + '\'' +
+                '}';
+    }
 }

@@ -75,4 +75,17 @@ public class Air_quality {
          return description;
      }
 
+    @Override
+    public String toString() {
+        return "Air_quality{" +
+                "pm25=" + pm25 +
+                ", pm10=" + pm10 +
+                ", o3=" + o3 +
+                ", so2=" + so2 +
+                ", no2=" + no2 +
+                ", co=" + co +
+                ", aqi=" + aqi +
+                ", description=" + description +
+                '}';
+    }
 }

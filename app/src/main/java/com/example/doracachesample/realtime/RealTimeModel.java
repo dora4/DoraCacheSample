@@ -2,7 +2,21 @@
   * Copyright 2021 bejson.com 
   */
 package com.example.doracachesample.realtime;
+
+import com.example.doracachesample.DoubleListConverter;
+
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
+
+import dora.db.OrmTable;
+import dora.db.PrimaryKeyEntity;
+import dora.db.PrimaryKeyId;
+import dora.db.converter.EmptyConverter;
+import dora.db.converter.StringListConverter;
+import dora.db.table.Convert;
+import dora.db.table.Id;
+import dora.db.table.Table;
 
 /**
  * Auto-generated: 2021-07-17 21:27:23
@@ -10,8 +24,11 @@ import java.util.List;
  * @author bejson.com (i@bejson.com)
  * @website http://www.bejson.com/java2pojo/
  */
-public class RealTimeModel {
+@Table("real_time")
+public class RealTimeModel implements OrmTable {
 
+    @Id
+    private long id;
     private String status;
     private String api_version;
     private String api_status;
@@ -20,8 +37,15 @@ public class RealTimeModel {
     private int tzshift;
     private String timezone;
     private long server_time;
+    @Convert(converter = EmptyConverter.class, columnType = String.class)
     private List<Double> location;
+    @Convert(converter = EmptyConverter.class, columnType = String.class)
     private Result result;
+
+    public long getId() {
+        return id;
+    }
+
     public void setStatus(String status) {
          this.status = status;
      }
@@ -106,5 +130,16 @@ public class RealTimeModel {
                 ", location=" + location +
                 ", result=" + result +
                 '}';
+    }
+
+    @Override
+    public boolean isUpgradeRecreated() {
+        return false;
+    }
+
+    @NotNull
+    @Override
+    public PrimaryKeyEntity getPrimaryKey() {
+        return new PrimaryKeyId(id);
     }
 }

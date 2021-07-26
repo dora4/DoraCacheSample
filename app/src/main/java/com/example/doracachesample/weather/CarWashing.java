@@ -12,13 +12,13 @@ import java.util.Date;
  */
 public class CarWashing {
 
-    private Date date;
+    private String date;
     private String index;
     private String desc;
-    public void setDate(Date date) {
+    public void setDate(String date) {
          this.date = date;
      }
-     public Date getDate() {
+     public String getDate() {
          return date;
      }
 
@@ -36,4 +36,12 @@ public class CarWashing {
          return desc;
      }
 
+    @Override
+    public String toString() {
+        return "CarWashing{" +
+                "date='" + date + '\'' +
+                ", index='" + index + '\'' +
+                ", desc='" + desc + '\'' +
+                '}';
+    }
 }

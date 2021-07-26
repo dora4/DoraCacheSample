@@ -2,7 +2,6 @@
   * Copyright 2021 bejson.com 
   */
 package com.example.doracachesample.weather;
-import java.util.Date;
 
 /**
  * Auto-generated: 2021-07-17 21:23:54
@@ -12,36 +11,34 @@ import java.util.Date;
  */
 public class Visibility {
 
-    private Date date;
+    private String date;
     private double max;
     private double min;
     private double avg;
-    public void setDate(Date date) {
-         this.date = date;
-     }
-     public Date getDate() {
-         return date;
-     }
 
-    public void setMax(double max) {
-         this.max = max;
-     }
-     public double getMax() {
-         return max;
-     }
+    public String getDate() {
+        return date;
+    }
 
-    public void setMin(double min) {
-         this.min = min;
-     }
-     public double getMin() {
-         return min;
-     }
+    public double getMax() {
+        return max;
+    }
 
-    public void setAvg(double avg) {
-         this.avg = avg;
-     }
-     public double getAvg() {
-         return avg;
-     }
+    public double getMin() {
+        return min;
+    }
 
+    public double getAvg() {
+        return avg;
+    }
+
+    @Override
+    public String toString() {
+        return "Visibility{" +
+                "date='" + date + '\'' +
+                ", max=" + max +
+                ", min=" + min +
+                ", avg=" + avg +
+                '}';
+    }
 }

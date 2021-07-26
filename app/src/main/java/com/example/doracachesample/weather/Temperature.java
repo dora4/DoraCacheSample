@@ -12,36 +12,18 @@ import java.util.Date;
  */
 public class Temperature {
 
-    private Date date;
-    private int max;
-    private int min;
+    private String date;
+    private double max;
+    private double min;
     private double avg;
-    public void setDate(Date date) {
-         this.date = date;
-     }
-     public Date getDate() {
-         return date;
-     }
 
-    public void setMax(int max) {
-         this.max = max;
-     }
-     public int getMax() {
-         return max;
-     }
-
-    public void setMin(int min) {
-         this.min = min;
-     }
-     public int getMin() {
-         return min;
-     }
-
-    public void setAvg(double avg) {
-         this.avg = avg;
-     }
-     public double getAvg() {
-         return avg;
-     }
-
+    @Override
+    public String toString() {
+        return "Temperature{" +
+                "date='" + date + '\'' +
+                ", max=" + max +
+                ", min=" + min +
+                ", avg=" + avg +
+                '}';
+    }
 }

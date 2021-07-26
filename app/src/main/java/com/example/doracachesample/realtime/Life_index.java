@@ -27,4 +27,11 @@ public class Life_index {
          return comfort;
      }
 
+    @Override
+    public String toString() {
+        return "Life_index{" +
+                "ultraviolet=" + ultraviolet +
+                ", comfort=" + comfort +
+                '}';
+    }
 }

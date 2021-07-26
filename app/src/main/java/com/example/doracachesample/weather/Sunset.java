@@ -12,11 +12,8 @@ package com.example.doracachesample.weather;
 public class Sunset {
 
     private String time;
-    public void setTime(String time) {
-         this.time = time;
-     }
-     public String getTime() {
-         return time;
-     }
 
+    public String getTime() {
+        return time;
+    }
 }

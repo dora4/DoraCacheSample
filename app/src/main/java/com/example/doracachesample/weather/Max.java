@@ -27,4 +27,11 @@ public class Max {
          return usa;
      }
 
+    @Override
+    public String toString() {
+        return "Max{" +
+                "chn=" + chn +
+                ", usa=" + usa +
+                '}';
+    }
 }

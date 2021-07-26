@@ -17,13 +17,13 @@ public class Realtime {
     private double cloudrate;
     private String skycon;
     private double visibility;
-    private int dswrf;
+    private double dswrf;
     private Wind wind;
     private double pressure;
     private double apparent_temperature;
     private Precipitation precipitation;
-    private Air_quality air_quality;
-    private Life_index life_index;
+//    private Air_quality air_quality;
+//    private Life_index life_index;
     public void setStatus(String status) {
          this.status = status;
      }
@@ -66,10 +66,10 @@ public class Realtime {
          return visibility;
      }
 
-    public void setDswrf(int dswrf) {
+    public void setDswrf(double dswrf) {
          this.dswrf = dswrf;
      }
-     public int getDswrf() {
+     public double getDswrf() {
          return dswrf;
      }
 
@@ -101,18 +101,34 @@ public class Realtime {
          return precipitation;
      }
 
-    public void setAir_quality(Air_quality air_quality) {
-         this.air_quality = air_quality;
-     }
-     public Air_quality getAir_quality() {
-         return air_quality;
-     }
+//    public void setAir_quality(Air_quality air_quality) {
+//         this.air_quality = air_quality;
+//     }
+//     public Air_quality getAir_quality() {
+//         return air_quality;
+//     }
 
-    public void setLife_index(Life_index life_index) {
-         this.life_index = life_index;
-     }
-     public Life_index getLife_index() {
-         return life_index;
-     }
+//    public void setLife_index(Life_index life_index) {
+//         this.life_index = life_index;
+//     }
+//     public Life_index getLife_index() {
+//         return life_index;
+//     }
 
+    @Override
+    public String toString() {
+        return "Realtime{" +
+                "status='" + status + '\'' +
+                ", temperature=" + temperature +
+                ", humidity=" + humidity +
+                ", cloudrate=" + cloudrate +
+                ", skycon='" + skycon + '\'' +
+                ", visibility=" + visibility +
+                ", dswrf=" + dswrf +
+                ", wind=" + wind +
+                ", pressure=" + pressure +
+                ", apparent_temperature=" + apparent_temperature +
+                ", precipitation=" + precipitation +
+                '}';
+    }
 }

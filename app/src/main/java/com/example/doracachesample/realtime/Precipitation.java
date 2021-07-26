@@ -27,4 +27,11 @@ public class Precipitation {
          return nearest;
      }
 
+    @Override
+    public String toString() {
+        return "Precipitation{" +
+                "local=" + local +
+                ", nearest=" + nearest +
+                '}';
+    }
 }

@@ -27,4 +27,11 @@ public class Avg {
          return usa;
      }
 
+    @Override
+    public String toString() {
+        return "Avg{" +
+                "chn=" + chn +
+                ", usa=" + usa +
+                '}';
+    }
 }

@@ -8,7 +8,6 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.doracachesample.httpresult.TestService
-import dora.cache.data.page.DataPager
 import dora.cache.data.page.PageCallback
 import dora.cache.data.visitor.DefaultPageDataVisitor
 import dora.db.OrmTable
@@ -20,14 +19,10 @@ import dora.http.DoraHttp.net
 import dora.http.DoraHttp.result
 import dora.http.DoraHttpException
 import dora.http.log.FormatLogInterceptor
-import dora.http.retrofit.BaseRetrofitManager
 import dora.http.retrofit.DoraRetrofitManager
 import okhttp3.Authenticator
 import okhttp3.CookieJar
-import okhttp3.Interceptor
-import okhttp3.OkHttpClient
 import java.util.*
-import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
 
@@ -39,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         val btnAccRefresh = findViewById<Button>(R.id.btnAccRefresh)
         val btnAccRemove = findViewById<Button>(R.id.btnAccRemove)
         val adapter = AccountAdapter()
-        val repository = AccountRepository(this, Account::class.java)
+        val repository = AccountRepository(this)
         repository.fetchListData().observe(this,
             Observer<List<Account>> {
 

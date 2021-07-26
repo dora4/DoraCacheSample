@@ -60,4 +60,15 @@ public class Minutely {
          return description;
      }
 
+    @Override
+    public String toString() {
+        return "Minutely{" +
+                "status='" + status + '\'' +
+                ", datasource='" + datasource + '\'' +
+                ", precipitation_2h=" + precipitation_2h +
+                ", precipitation=" + precipitation +
+                ", probability=" + probability +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }

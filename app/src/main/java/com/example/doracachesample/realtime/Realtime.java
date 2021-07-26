@@ -115,4 +115,22 @@ public class Realtime {
          return life_index;
      }
 
+    @Override
+    public String toString() {
+        return "Realtime{" +
+                "status='" + status + '\'' +
+                ", temperature=" + temperature +
+                ", humidity=" + humidity +
+                ", cloudrate=" + cloudrate +
+                ", skycon='" + skycon + '\'' +
+                ", visibility=" + visibility +
+                ", dswrf=" + dswrf +
+                ", wind=" + wind +
+                ", pressure=" + pressure +
+                ", apparent_temperature=" + apparent_temperature +
+                ", precipitation=" + precipitation +
+                ", air_quality=" + air_quality +
+                ", life_index=" + life_index +
+                '}';
+    }
 }

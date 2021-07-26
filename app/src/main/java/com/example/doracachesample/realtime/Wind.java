@@ -27,4 +27,11 @@ public class Wind {
          return direction;
      }
 
+    @Override
+    public String toString() {
+        return "Wind{" +
+                "speed=" + speed +
+                ", direction=" + direction +
+                '}';
+    }
 }

@@ -35,4 +35,12 @@ public class Nearest {
          return intensity;
      }
 
+    @Override
+    public String toString() {
+        return "Nearest{" +
+                "status='" + status + '\'' +
+                ", distance=" + distance +
+                ", intensity=" + intensity +
+                '}';
+    }
 }

@@ -108,4 +108,21 @@ public class Hourly {
          return air_quality;
      }
 
+    @Override
+    public String toString() {
+        return "Hourly{" +
+                "status='" + status + '\'' +
+                ", description='" + description + '\'' +
+                ", precipitation=" + precipitation +
+                ", temperature=" + temperature +
+                ", wind=" + wind +
+                ", humidity=" + humidity +
+                ", cloudrate=" + cloudrate +
+                ", skycon=" + skycon +
+                ", pressure=" + pressure +
+                ", visibility=" + visibility +
+                ", dswrf=" + dswrf +
+                ", air_quality=" + air_quality +
+                '}';
+    }
 }

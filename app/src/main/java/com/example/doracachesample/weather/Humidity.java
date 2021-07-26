@@ -12,14 +12,14 @@ import java.util.Date;
  */
 public class Humidity {
 
-    private Date date;
+    private String date;
     private double max;
     private double min;
     private double avg;
-    public void setDate(Date date) {
+    public void setDate(String date) {
          this.date = date;
      }
-     public Date getDate() {
+     public String getDate() {
          return date;
      }
 
@@ -44,4 +44,13 @@ public class Humidity {
          return avg;
      }
 
+    @Override
+    public String toString() {
+        return "Humidity{" +
+                "date='" + date + '\'' +
+                ", max=" + max +
+                ", min=" + min +
+                ", avg=" + avg +
+                '}';
+    }
 }

@@ -12,12 +12,12 @@ import java.util.Date;
  */
 public class Skycon {
 
-    private Date date;
+    private String date;
     private String value;
-    public void setDate(Date date) {
+    public void setDate(String date) {
          this.date = date;
      }
-     public Date getDate() {
+     public String getDate() {
          return date;
      }
 
@@ -28,4 +28,11 @@ public class Skycon {
          return value;
      }
 
+    @Override
+    public String toString() {
+        return "Skycon{" +
+                "date='" + date + '\'' +
+                ", value='" + value + '\'' +
+                '}';
+    }
 }

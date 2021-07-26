@@ -12,36 +12,17 @@ import java.util.Date;
  */
 public class Dswrf {
 
-    private Date date;
+    private String date;
     private double max;
-    private int min;
-    private int avg;
-    public void setDate(Date date) {
-         this.date = date;
-     }
-     public Date getDate() {
-         return date;
-     }
-
-    public void setMax(double max) {
-         this.max = max;
-     }
-     public double getMax() {
-         return max;
-     }
-
-    public void setMin(int min) {
-         this.min = min;
-     }
-     public int getMin() {
-         return min;
-     }
-
-    public void setAvg(int avg) {
-         this.avg = avg;
-     }
-     public int getAvg() {
-         return avg;
-     }
-
+    private double min;
+    private double avg;
+    @Override
+    public String toString() {
+        return "Dswrf{" +
+                "date='" + date + '\'' +
+                ", max=" + max +
+                ", min=" + min +
+                ", avg=" + avg +
+                '}';
+    }
 }

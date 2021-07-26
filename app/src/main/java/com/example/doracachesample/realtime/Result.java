@@ -27,4 +27,11 @@ public class Result {
          return primary;
      }
 
+    @Override
+    public String toString() {
+        return "Result{" +
+                "realtime=" + realtime +
+                ", primary=" + primary +
+                '}';
+    }
 }

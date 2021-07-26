@@ -52,4 +52,14 @@ public class Life_index {
          return coldRisk;
      }
 
+    @Override
+    public String toString() {
+        return "Life_index{" +
+                "ultraviolet=" + ultraviolet +
+                ", carWashing=" + carWashing +
+                ", dressing=" + dressing +
+                ", comfort=" + comfort +
+                ", coldRisk=" + coldRisk +
+                '}';
+    }
 }

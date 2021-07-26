@@ -12,14 +12,14 @@ import java.util.Date;
  */
 public class Cloudrate {
 
-    private Date date;
+    private String date;
     private int max;
     private double min;
     private double avg;
-    public void setDate(Date date) {
+    public void setDate(String date) {
          this.date = date;
      }
-     public Date getDate() {
+     public String getDate() {
          return date;
      }
 
@@ -44,4 +44,13 @@ public class Cloudrate {
          return avg;
      }
 
+    @Override
+    public String toString() {
+        return "Cloudrate{" +
+                "date='" + date + '\'' +
+                ", max=" + max +
+                ", min=" + min +
+                ", avg=" + avg +
+                '}';
+    }
 }
