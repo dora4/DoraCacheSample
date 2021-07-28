@@ -337,7 +337,7 @@ api "com.github.dora4:dcache-android:$latest_version"
                })
    ```
 
-   如果设置了isListData为false，则应该调用fetchData。
+   如果设置了isListMode为false，则应该调用fetchData。
 
 5. **本地缓存数据处理**
 
@@ -391,16 +391,16 @@ api "com.github.dora4:dcache-android:$latest_version"
    
        lateinit var dao: OrmDao<T>
    
+       override fun init() {
+           dao = DaoFactory.getDao(clazz) as OrmDao<T>
+       }
+       
        override fun queryCache(condition: Condition): List<M>? {
            return dao.select(WhereBuilder.create(condition)) as List<M>?
        }
    
        override fun removeOldCache(condition: Condition) {
            dao.delete(WhereBuilder.create(condition))
-       }
-   
-       override fun init() {
-           dao = DaoFactory.getDao(clazz) as OrmDao<T>
        }
    
        override fun addNewCache(models: List<M>) {
