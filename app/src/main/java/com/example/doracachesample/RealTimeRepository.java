@@ -11,7 +11,7 @@ import dora.cache.repository.Repository;
 import dora.http.DoraCallback;
 import dora.http.retrofit.DoraRetrofitManager;
 
-@Repository(modelClass = RealTimeModel.class, isListData = false)
+@Repository(modelClass = RealTimeModel.class, isListMode = false)
 public class RealTimeRepository extends DoraDatabaseCacheRepository<RealTimeModel> {
 
     public RealTimeRepository(@NotNull Context context) {

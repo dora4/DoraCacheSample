@@ -325,7 +325,7 @@ api "com.github.dora4:dcache-android:$latest_version"
 
 3. **@Repository和BaseRepository**
 
-   并不是所有Repository类都需要手动配置@Repository注解，只有在不使用缺省值时需要配置。isListData，如果修改为false，则表示这个Repository被用来缓存非集合数据。而BaseRepository为所有数据缓存逻辑的基类，数据缓存流程控制在其子类实现。在使用前，你需要重写Repository的获取网络数据的方法<u>onLoadFromNetwork</u>，才能通过fetchData或fetchListData获取到数据。
+   并不是所有Repository类都需要手动配置@Repository注解，只有在不使用缺省值时需要配置。isListMode，如果修改为false，则表示这个Repository被用来缓存非集合数据。而BaseRepository为所有数据缓存逻辑的基类，数据缓存流程控制在其子类实现。在使用前，你需要重写Repository的获取网络数据的方法<u>onLoadFromNetwork</u>，才能通过fetchData或fetchListData获取到数据。
 
 4. **使用示例**
 
@@ -370,24 +370,24 @@ api "com.github.dora4:dcache-android:$latest_version"
 
 6. **整合ORM框架**
 
-   通常情况下，在一个已经成型的项目，更换orm框架抛开开发成本先不说，风险也是很大的。所以这里提供了一种无缝衔接主流orm框架的接口CacheFactory和ListCacheFactory。顾名思义，ListCacheFactory用于集合数据模式下的Repository。默认Repository采用的orm框架是内置的dora-db，如果你使用dora-db，你就无须考虑整合orm框架的问题。如果你用的是市面上主流的orm框架，比如greendao、ormlite或是realm，甚至是room，你就需要自己更换CacheFactory了。以下提供和dora-db整合的源代码，你可以参考它进行整合。
+   通常情况下，在一个已经成型的项目，更换orm框架抛开开发成本先不说，风险也是很大的。所以这里提供了一种无缝衔接主流orm框架的接口CacheHolder和ListCacheHolder。顾名思义，ListCacheHolder用于集合数据模式下的Repository。默认Repository采用的orm框架是内置的dora-db，如果你使用dora-db，你就无须考虑整合orm框架的问题。如果你用的是市面上主流的orm框架，比如greendao、ormlite或是realm，甚至是room，你就需要自己更换CacheHolder了。以下提供和dora-db整合的源代码，你可以参考它进行整合。
 
    ```kotlin
-   abstract class DoraDatabaseCacheRepository<T: OrmTable>(context: Context, private val ormClass: Class<T>)
-       : BaseDatabaseCacheRepository<T>(context, ormClass) {
+   abstract class DoraDatabaseCacheRepository<T: OrmTable>(context: Context)
+       : BaseDatabaseCacheRepository<T>(context) {
    
-       override fun createCacheFactory(): CacheFactory<T> {
-           return DoraCacheFactory<T, T>(ormClass)
+       override fun createCacheHolder(clazz: Class<T>): CacheHolder<T> {
+           return DoraCacheHolder<T, T>(clazz)
        }
    
-       override fun createListCacheFactory(): CacheFactory<List<T>> {
-           return DoraListCacheFactory<T, T>(ormClass)
+       override fun createListCacheHolder(clazz: Class<T>): CacheHolder<List<T>> {
+           return DoraListCacheHolder<T, T>(clazz)
        }
    }
    ```
 
    ```kotlin
-   class DoraListCacheFactory<M, T : OrmTable>(var clazz: Class<out OrmTable>) : ListCacheFactory<M>() {
+   class DoraListCacheHolder<M, T : OrmTable>(var clazz: Class<out OrmTable>) : ListCacheHolder<M>() {
    
        lateinit var dao: OrmDao<T>
    
