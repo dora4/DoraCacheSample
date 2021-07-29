@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:fillViewport="true">
-    <TextView
-        android:id="@+id/tv_weather"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <Button
+        android:id="@+id/btn_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="刷新"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_weather"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="暂无数据"/>
-</ScrollView>
+        android:orientation="vertical"
+        android:fillViewport="true">
+    </androidx.recyclerview.widget.RecyclerView>
+</LinearLayout>
