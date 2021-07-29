@@ -1,7 +1,9 @@
 package com.example.doracachesample.weather.biz
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -9,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.doracachesample.R
 import com.example.doracachesample.weather.common.Temperature
 import com.example.doracachesample.weather.daily.DailyModel
+import com.example.doracachesample.weather.realtime.RealTimeModel
+import com.google.gson.Gson
 import dora.http.DoraHttp.net
 import dora.http.DoraHttp.request
 import dora.http.log.FormatLogInterceptor
@@ -46,18 +50,43 @@ class WeatherActivity : AppCompatActivity() {
 
     private fun refresh(recyclerView: RecyclerView) {
         net {
+            Log.e("refresh", "111111--->${System.currentTimeMillis()}")
             request {
-                dailyRepository.fetchData().observe(this, Observer<DailyModel> {
-                    it?.let {
-                        if (it.api_status == "active") {
-                            it.result?.apply {
-                                daily.temperature.apply {
-                                    recyclerView.adapter = WeatherAdapter(this as ArrayList<Temperature>)
+                Log.e("refresh", "222222--->${System.currentTimeMillis()}")
+                // repository需要在主线程调用
+                runOnUiThread {
+                    Log.e("refresh", "333333--->${System.currentTimeMillis()}")
+                    dailyRepository.fetchData().observe(this, Observer<DailyModel> {
+                        it?.let {
+                            if (it.api_status == "active") {
+                                it.result?.apply {
+                                    daily.temperature.apply {
+                                        recyclerView.adapter =
+                                                TemperatureAdapter(this as ArrayList<Temperature>)
+                                    }
                                 }
                             }
                         }
-                    }
-                })
+                    })
+                }
+            }
+            Log.e("refresh", "444444--->${System.currentTimeMillis()}")
+            request {
+                runOnUiThread {
+                    Log.e("refresh", "555555--->${System.currentTimeMillis()}")
+                    dailyRepository.fetchData().observe(this, Observer<DailyModel> {
+                        it?.let {
+                            if (it.api_status == "active") {
+                                it.result?.apply {
+                                    daily.temperature.apply {
+                                        recyclerView.adapter =
+                                                TemperatureAdapter(this as ArrayList<Temperature>)
+                                    }
+                                }
+                            }
+                        }
+                    })
+                }
             }
         }
     }

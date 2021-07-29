@@ -11,7 +11,6 @@ import java.util.List;
 import dora.db.OrmTable;
 import dora.db.PrimaryKeyEntity;
 import dora.db.PrimaryKeyId;
-import dora.db.converter.EmptyConverter;
 import dora.db.table.Convert;
 import dora.db.table.Id;
 import dora.db.table.Table;
@@ -35,9 +34,9 @@ public class WeatherModel implements OrmTable {
     private int tzshift;
     private String timezone;
     private long server_time;
-    @Convert(converter = EmptyConverter.class, columnType = String.class)
+    @Convert(converter = DoubleListConverter.class, columnType = String.class)
     private List<Double> location;
-    @Convert(converter = ResultConverter.class, columnType = String.class)
+    @Convert(converter = ResultJsonConverter.class, columnType = String.class)
     private Result result;
 
     public String getStatus() {

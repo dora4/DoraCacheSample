@@ -12,7 +12,8 @@ import dora.cache.repository.Repository;
 import dora.http.DoraCallback;
 import dora.http.retrofit.DoraRetrofitManager;
 
-@Repository(cacheStrategy = BaseRepository.CacheStrategy.DATABASE_CACHE, modelClass = DailyModel.class, isListMode = false)
+@Repository(cacheStrategy = BaseRepository.CacheStrategy.DATABASE_CACHE,
+        modelClass = DailyModel.class, isListMode = false)
 public class DailyRepository extends DoraDatabaseCacheRepository<DailyModel> {
 
     public DailyRepository(@NotNull Context context) {

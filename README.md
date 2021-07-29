@@ -325,7 +325,7 @@ api "com.github.dora4:dcache-android:$latest_version"
 
 3. **@Repository和BaseRepository**
 
-   并不是所有Repository类都需要手动配置@Repository注解，只有在不使用缺省值时需要配置。isListMode，如果修改为false，则表示这个Repository被用来缓存非集合数据。而BaseRepository为所有数据缓存逻辑的基类，数据缓存流程控制在其子类实现。在使用前，你需要重写Repository的获取网络数据的方法<u>onLoadFromNetwork</u>，才能通过fetchData或fetchListData获取到数据。
+   modelClass指定model的类型，必须配置，isListMode，默认为true，如果修改为false，则表示这个Repository被用来缓存非集合数据。而BaseRepository为所有数据缓存逻辑的基类，数据缓存流程控制在其子类实现。在使用前，你需要重写Repository的获取网络数据的方法<u>onLoadFromNetwork</u>，才能通过fetchData或fetchListData获取到数据。
 
 4. **使用示例**
 

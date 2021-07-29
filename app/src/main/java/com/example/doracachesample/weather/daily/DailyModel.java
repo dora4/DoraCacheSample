@@ -2,7 +2,8 @@
   * Copyright 2021 bejson.com 
   */
 package com.example.doracachesample.weather.daily;
-import com.example.doracachesample.weather.biz.ResultConverter;
+import com.example.doracachesample.weather.biz.DoubleListConverter;
+import com.example.doracachesample.weather.biz.ResultJsonConverter;
 import com.example.doracachesample.weather.common.Result;
 
 import org.jetbrains.annotations.NotNull;
@@ -12,7 +13,6 @@ import java.util.List;
 import dora.db.OrmTable;
 import dora.db.PrimaryKeyEntity;
 import dora.db.PrimaryKeyId;
-import dora.db.converter.EmptyConverter;
 import dora.db.table.Convert;
 import dora.db.table.Id;
 
@@ -34,9 +34,9 @@ public class DailyModel implements OrmTable {
     private int tzshift;
     private String timezone;
     private long server_time;
-    @Convert(converter = EmptyConverter.class, columnType = String.class)
+    @Convert(converter = DoubleListConverter.class, columnType = String.class)
     private List<Double> location;
-    @Convert(converter = ResultConverter.class, columnType = String.class)
+    @Convert(converter = ResultJsonConverter.class, columnType = String.class)
     private Result result;
 
     public void setStatus(String status) {

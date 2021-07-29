@@ -9,7 +9,7 @@ import com.example.doracachesample.R
 import com.example.doracachesample.weather.common.Temperature
 import kotlin.collections.ArrayList
 
-class WeatherAdapter(val temperatures: ArrayList<Temperature>) : RecyclerView.Adapter<WeatherAdapter.ViewHolder>() {
+class TemperatureAdapter(val temperatures: ArrayList<Temperature>) : RecyclerView.Adapter<TemperatureAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_temprature, null))

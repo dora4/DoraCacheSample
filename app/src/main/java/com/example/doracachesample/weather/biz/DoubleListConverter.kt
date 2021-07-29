@@ -1,4 +1,4 @@
-package com.example.doracachesample
+package com.example.doracachesample.weather.biz
 
 import dora.db.table.PropertyConverter
 import java.util.*
@@ -14,7 +14,9 @@ class DoubleListConverter : PropertyConverter<List<Double>, String> {
     override fun convertToEntityProperty(databaseValue: String?): List<Double>? {
         val result: MutableList<Double> = ArrayList()
         databaseValue?.split(",")?.forEach {
-            result.add(it.toDouble())
+            if (it != "") {
+                result.add(it.toDouble())
+            }
         }
         return result
     }
