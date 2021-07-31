@@ -321,7 +321,7 @@ api "com.github.dora4:dcache-android:$latest_version"
 
 2. **集合数据模式和非集合数据模式**
 
-   通过修改isListData的值来改变数据模式，一个repository要么处于集合数据模式，要么处于非集合数据模式，默认为集合数据模式。
+   通过修改isListMode的值来改变数据模式，一个repository要么处于集合数据模式，要么处于非集合数据模式，默认为集合数据模式。
 
 3. **@Repository和BaseRepository**
 
@@ -417,7 +417,7 @@ api "com.github.dora4:dcache-android:$latest_version"
 
 捐赠虚拟货币
 
-| 代币           | 钱包地址                                   | 备注                                                        |
+| 币种           | 钱包地址                                   | 备注                                                        |
 | -------------- | ------------------------------------------ | ----------------------------------------------------------- |
 | 柚子(EOS)      | doramusic123                               | TAG中直接填写你的github用户名                               |
 | USDT(TRC-20链) | TYVXzqctSSPSTeVPYg7i7qbEtSxwrAJQ5y         | 发送你的钱包地址和github用户名至邮箱dora924666990@gmail.com |
