@@ -10,10 +10,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.doracachesample.httpresult.TestService
 import dora.cache.data.page.PageCallback
 import dora.cache.data.visitor.DefaultPageDataVisitor
-import dora.db.OrmTable
 import dora.db.Transaction
 import dora.db.builder.QueryBuilder
 import dora.db.dao.DaoFactory
+import dora.db.table.OrmTable
 import dora.http.DoraHttp.api
 import dora.http.DoraHttp.net
 import dora.http.DoraHttp.result
@@ -39,12 +39,12 @@ class MainActivity : AppCompatActivity() {
             Observer<List<Account>> {
 
             })
-        val pager = repository.obtainPager()
-        pager.setPageCallback(object : PageCallback<Account> {
-            override fun onResult(model: List<Account>) {
+        repository.obtainPager()
+        .setPageCallback(object : PageCallback<Account> {
+            override fun onResult(models: List<Account>) {
             }
         })
-        DefaultPageDataVisitor<Account>().visitDataPager(pager)
+        .accept(DefaultPageDataVisitor<Account>())
         btnAccAdd.setOnClickListener {
             DaoFactory.getDao(Account::class.java).insert(Account(generateAccKey(),
                     "D" + generateAccKey(), "P" + generateAccKey()))

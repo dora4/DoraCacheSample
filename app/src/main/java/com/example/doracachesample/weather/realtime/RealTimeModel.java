@@ -11,11 +11,11 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-import dora.db.OrmTable;
-import dora.db.PrimaryKeyEntity;
-import dora.db.PrimaryKeyId;
 import dora.db.table.Convert;
 import dora.db.table.Id;
+import dora.db.table.OrmTable;
+import dora.db.table.PrimaryKeyEntity;
+import dora.db.table.PrimaryKeyId;
 import dora.db.table.Table;
 
 /**

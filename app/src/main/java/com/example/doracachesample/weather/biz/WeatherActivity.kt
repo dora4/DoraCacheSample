@@ -3,7 +3,6 @@ package com.example.doracachesample.weather.biz
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -11,8 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.doracachesample.R
 import com.example.doracachesample.weather.common.Temperature
 import com.example.doracachesample.weather.daily.DailyModel
-import com.example.doracachesample.weather.realtime.RealTimeModel
-import com.google.gson.Gson
 import dora.http.DoraHttp.net
 import dora.http.DoraHttp.request
 import dora.http.log.FormatLogInterceptor

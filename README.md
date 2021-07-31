@@ -1,4 +1,4 @@
-# DoraCache使用文档V1.0.4
+# DoraCache使用文档V1.1.0
 
 简介：一个使用在Android平台的数据缓存框架，支持将model数据从后端接口下载后，简单的配置即可自动映射到数据库，并在断网的情况下可以离线读取。
 
@@ -325,7 +325,7 @@ api "com.github.dora4:dcache-android:$latest_version"
 
 3. **@Repository和BaseRepository**
 
-   modelClass指定model的类型，必须配置，isListMode，默认为true，如果修改为false，则表示这个Repository被用来缓存非集合数据。而BaseRepository为所有数据缓存逻辑的基类，数据缓存流程控制在其子类实现。在使用前，你需要重写Repository的获取网络数据的方法<u>onLoadFromNetwork</u>，才能通过fetchData或fetchListData获取到数据。
+   isListMode，默认为true，如果修改为false，则表示这个Repository被用来缓存非集合数据。而BaseRepository为所有数据缓存逻辑的基类，数据缓存流程控制在其子类实现。在使用前，你需要重写Repository的获取网络数据的方法<u>onLoadFromNetwork</u>，才能通过fetchData或fetchListData获取到数据。
 
 4. **使用示例**
 
@@ -361,11 +361,11 @@ api "com.github.dora4:dcache-android:$latest_version"
                val pager = repository.obtainPager()
        				// 设置分页数据结果的回调
                pager.setPageCallback(object : PageCallback<Account> {
-                   override fun onResult(model: List<Account>) {
+                   override fun onResult(models: List<Account>) {
                    }
                })
        				// 使用默认的分页访问者访问数据
-               DefaultPageDataVisitor<Account>().visitDataPager(pager)
+               pager.accept(DefaultPageDataVisitor<Account>())
        ```
 
 6. **整合ORM框架**
@@ -373,6 +373,7 @@ api "com.github.dora4:dcache-android:$latest_version"
    通常情况下，在一个已经成型的项目，更换orm框架抛开开发成本先不说，风险也是很大的。所以这里提供了一种无缝衔接主流orm框架的接口CacheHolder和ListCacheHolder。顾名思义，ListCacheHolder用于集合数据模式下的Repository。默认Repository采用的orm框架是内置的dora-db，如果你使用dora-db，你就无须考虑整合orm框架的问题。如果你用的是市面上主流的orm框架，比如greendao、ormlite或是realm，甚至是room，你就需要自己更换CacheHolder了。以下提供和dora-db整合的源代码，你可以参考它进行整合。
 
    ```kotlin
+   @RepositoryType(BaseRepository.CacheStrategy.DATABASE_CACHE)
    abstract class DoraDatabaseCacheRepository<T: OrmTable>(context: Context)
        : BaseDatabaseCacheRepository<T>(context) {
    
@@ -385,7 +386,7 @@ api "com.github.dora4:dcache-android:$latest_version"
        }
    }
    ```
-
+   
    ```kotlin
    class DoraListCacheHolder<M, T : OrmTable>(var clazz: Class<out OrmTable>) : ListCacheHolder<M>() {
    
@@ -408,7 +409,6 @@ api "com.github.dora4:dcache-android:$latest_version"
        }
    }
    ```
-
    
 
 #### 四、支持开源项目

@@ -1,6 +1,6 @@
 package com.example.doracachesample.weather.biz
 
-import dora.db.table.PropertyConverter
+import dora.db.converter.PropertyConverter
 import java.util.*
 
 class DoubleListConverter : PropertyConverter<List<Double>, String> {

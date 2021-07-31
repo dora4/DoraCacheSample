@@ -1,8 +1,5 @@
 package com.example.doracachesample
 
-import dora.db.OrmTable
-import dora.db.PrimaryKeyEntity
-import dora.db.PrimaryKeyId
 import dora.db.constraint.Default
 import dora.db.constraint.NotNull
 import dora.db.constraint.Unique

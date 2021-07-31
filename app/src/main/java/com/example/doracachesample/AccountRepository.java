@@ -11,9 +11,4 @@ public class AccountRepository extends DoraDatabaseCacheRepository<Account> {
     public AccountRepository(@NotNull Context context) {
         super(context);
     }
-
-    @Override
-    public boolean isNoNetworkMode() {
-        return false;
-    }
 }
