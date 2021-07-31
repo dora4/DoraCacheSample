@@ -4,8 +4,7 @@ import android.app.Application
 import com.example.doracachesample.weather.biz.WeatherModel
 import com.example.doracachesample.weather.daily.DailyModel
 import com.example.doracachesample.weather.realtime.RealTimeModel
-import dora.bugskiller.DoraConfig
-import dora.bugskiller.StoragePolicy
+import com.lwh.jackknife.CrashReport
 import dora.db.Orm
 import dora.db.OrmConfig
 
@@ -23,6 +22,6 @@ class SampleApp : Application() {
                     DailyModel::class.java)
                 .version(1)
                 .build())
-        DoraConfig.Builder(this).crashReportPolicy(StoragePolicy("dcache_log")).build()
+        CrashReport.init(this)
     }
 }

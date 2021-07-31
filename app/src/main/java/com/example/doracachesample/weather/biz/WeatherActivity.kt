@@ -57,7 +57,7 @@ class WeatherActivity : AppCompatActivity() {
                         it?.let {
                             if (it.api_status == "active") {
                                 it.result?.apply {
-                                    daily.temperature.apply {
+                                    daily?.temperature.apply {
                                         recyclerView.adapter =
                                                 TemperatureAdapter(this as ArrayList<Temperature>)
                                     }
@@ -75,7 +75,7 @@ class WeatherActivity : AppCompatActivity() {
                         it?.let {
                             if (it.api_status == "active") {
                                 it.result?.apply {
-                                    daily.temperature.apply {
+                                    daily?.temperature.apply {
                                         recyclerView.adapter =
                                                 TemperatureAdapter(this as ArrayList<Temperature>)
                                     }

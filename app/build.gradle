@@ -41,8 +41,7 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-
-    implementation 'com.github.JackWHLiu:dora:2.3.1'
+    implementation 'com.github.JackWHLiu:jackknife:1.0'
 
     def latest_version = '1.1.0'
 //    api "com.github.dora4:dcache-android:$latest_version"

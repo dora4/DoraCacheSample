@@ -19,7 +19,7 @@ class TemperatureAdapter(val temperatures: ArrayList<Temperature>) : RecyclerVie
         val tvTemperatureDate = holder.itemView.findViewById<TextView>(R.id.tvTemperatureDate)
         val tvTemperatureMax = holder.itemView.findViewById<TextView>(R.id.tvTemperatureMax)
         val tvTemperatureMin = holder.itemView.findViewById<TextView>(R.id.tvTemperatureMin)
-        tvTemperatureDate.text = temperatures[position].date.split("T")[0]
+        tvTemperatureDate.text = temperatures[position].date!!.split("T")[0]
         tvTemperatureMax.text = "${temperatures[position].max}°"
         tvTemperatureMin.text = "${temperatures[position].min}°"
     }
