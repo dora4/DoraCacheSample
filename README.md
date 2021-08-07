@@ -4,6 +4,10 @@
 
 
 
+### 运行截图
+
+![avatar](https://github.com/dora4/DoraCacheSample/blob/main/art/screenshot_20210808_062644.png)
+
 ### 开发前的准备
 
 #### 开发环境
@@ -23,6 +27,8 @@ def latest_version = 'x.x.x'
 
 api "com.github.dora4:dcache-android:$latest_version"
 ```
+
+如果示例代码编译不过，请将本地的库依赖修改为远程jitpack的依赖。
 
 
 
@@ -409,7 +415,6 @@ api "com.github.dora4:dcache-android:$latest_version"
        }
    }
    ```
-   
 
 #### 四、支持开源项目
 
