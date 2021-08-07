@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">DoraCacheSample</string>
+    <string name="app_name">dcache sample</string>
+    <string name="cover_pachong_label">dcache网络爬虫测试</string>
+    <string name="cover_data_label">dcache数据保存测试</string>
+    <string name="cover_cache_label">dcache数据缓存测试</string>
+    <string name="cover_weather_label">dcache天气案例</string>
 </resources>

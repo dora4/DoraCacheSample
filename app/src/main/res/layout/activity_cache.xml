@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/scrollView">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/tvMemoryCache"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="weather:none\n\n"/>
+        <TextView
+            android:id="@+id/tvCacheRealtime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="realtime:none\n\n"/>
+        <TextView
+            android:id="@+id/tvCacheMinutely"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="minutely:none\n\n"/>
+        <TextView
+            android:id="@+id/tvCacheHourly"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="hourly:none"/>
+        <TextView
+            android:id="@+id/tvCacheDaily"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="daily:"/>
+    </LinearLayout>
+</ScrollView>
