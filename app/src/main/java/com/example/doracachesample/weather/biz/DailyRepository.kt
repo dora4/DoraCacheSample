@@ -10,7 +10,9 @@ import dora.http.retrofit.DoraRetrofitManager
 @Repository(isListMode = false)
 class DailyRepository(context: Context) : DoraDatabaseCacheRepository<DailyModel>(context) {
 
+    var latlng: String = ""
+
     override fun onLoadFromNetwork(callback: DoraCallback<DailyModel>) {
-        DoraRetrofitManager.getService(WeatherService::class.java).getDaily().enqueue(callback)
+        DoraRetrofitManager.getService(WeatherService::class.java).getDaily(latlng).enqueue(callback)
     }
 }

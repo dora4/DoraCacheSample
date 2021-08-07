@@ -10,7 +10,9 @@ import dora.http.retrofit.DoraRetrofitManager
 @Repository(isListMode = false)
 class RealTimeRepository(context: Context) : DoraDatabaseCacheRepository<RealTimeModel>(context) {
 
+    var latlng: String = ""
+
     override fun onLoadFromNetwork(callback: DoraCallback<RealTimeModel>) {
-        DoraRetrofitManager.getService(WeatherService::class.java).getRealTime().enqueue(callback)
+        DoraRetrofitManager.getService(WeatherService::class.java).getRealTime(latlng).enqueue(callback)
     }
 }
