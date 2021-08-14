@@ -10,17 +10,20 @@
         android:id="@+id/tvTemperatureDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:textSize="12sp" />
     <TextView
         android:id="@+id/tvTemperatureMax"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:textSize="12sp" />
     <TextView
         android:id="@+id/tvTemperatureMin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:textSize="12sp" />
 </LinearLayout>

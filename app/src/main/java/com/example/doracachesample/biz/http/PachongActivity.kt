@@ -32,7 +32,7 @@ class PachongActivity : AppCompatActivity() {
             if (!isRunning) {
                 net {
                     isRunning = true
-                    readAssetsText(tvPrint, this, "adcode_simple.csv")
+                    readAssetsText(tvPrint, this, "adcode_test.csv")
                         isRunning = false
                 }
             } else {

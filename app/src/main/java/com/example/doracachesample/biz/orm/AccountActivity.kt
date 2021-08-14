@@ -6,7 +6,6 @@ import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.doracachesample.R
-import com.example.doracachesample.biz.orm.httpresult.TestService
 import dora.db.Transaction
 import dora.db.builder.QueryBuilder
 import dora.db.dao.DaoFactory
@@ -76,7 +75,7 @@ class AccountActivity : AppCompatActivity() {
                 networkInterceptors().add(FormatLogInterceptor())
                 this
             }
-            registerBaseUrl(TestService::class.java, "http://api.k780.com")
+//            registerBaseUrl(TestService::class.java, "http://api.k780.com")
             registerBaseUrl(AccountService::class.java, "http://github.com/dora4")
         }
 //        net {
