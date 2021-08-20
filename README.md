@@ -6,7 +6,7 @@
 
 ### 运行截图
 
-![avatar](https://github.com/dora4/DoraCacheSample/blob/main/art/screenshot_20210808_062644.png)
+![avatar](https://github.com/dora4/DoraCacheSample/blob/main/art/dcache.png)
 
 ### 开发前的准备
 
