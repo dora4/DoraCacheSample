@@ -4,9 +4,9 @@
 
 
 
-### 运行效果
+### 运行截图
 
-![avatar](https://dora4.oss-cn-hangzhou.aliyuncs.com/dcache.gif)
+![avatar](https://github.com/dora4/DoraCacheSample/blob/main/art/dcache.png)
 
 ### 开发前的准备
 
