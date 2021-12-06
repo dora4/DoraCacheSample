@@ -43,9 +43,9 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'com.github.JackWHLiu:jackknife:1.0'
 
-    def latest_version = '1.1.0'
-    api "com.github.dora4:dcache-android:$latest_version"
-//    api (name: "dcache-v${latest_version}@debug", ext: 'aar')
+    def latest_version = '1.1.1'
+//    api "com.github.dora4:dcache-android:$latest_version"
+    api (name: "dcache-v${latest_version}@debug", ext: 'aar')
 
     implementation 'com.squareup.okhttp3:okhttp:4.8.0'
     implementation 'com.squareup.retrofit2:retrofit:2.7.2'

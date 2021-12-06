@@ -11,9 +11,6 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dcache.R
-import com.example.dcache.model.common.Temperature
-import dora.cache.data.page.PageCallback
-import dora.cache.data.visitor.DefaultPageDataVisitor
 import dora.http.DoraHttp.net
 import dora.http.DoraHttp.request
 import dora.http.log.FormatLogInterceptor
