@@ -9,11 +9,10 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.dcache.R
 import com.example.dcache.biz.weather.WeatherService
 import com.example.dcache.model.DailyModel
-import com.example.dcache.model.HourlyModel
 import dora.http.DoraHttp
 import dora.http.DoraHttp.net
 import dora.http.log.FormatLogInterceptor
-import dora.http.retrofit.DoraRetrofitManager
+import dora.http.retrofit.RetrofitManager
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
@@ -40,7 +39,7 @@ class PachongActivity : AppCompatActivity() {
                 Toast.makeText(this, "正在跑呢", Toast.LENGTH_SHORT).show()
             }
         }
-        DoraRetrofitManager.init {
+        RetrofitManager.init {
             okhttp {
                 interceptors().add(FormatLogInterceptor())
                 this
@@ -68,7 +67,7 @@ class PachongActivity : AppCompatActivity() {
 
     private suspend fun loopPrint(tvPrint: TextView, latlng: String, addr: String) {
         val ret = DoraHttp.result {
-            DoraRetrofitManager.getService(WeatherService::class.java)
+            RetrofitManager.getService(WeatherService::class.java)
                     .getDaily(latlng)
         }
         printLine(tvPrint, addr, ret)

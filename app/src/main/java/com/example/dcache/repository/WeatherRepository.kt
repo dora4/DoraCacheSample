@@ -6,7 +6,7 @@ import com.example.dcache.model.WeatherModel
 import dora.cache.repository.DoraMemoryCacheRepository
 import dora.cache.repository.Repository
 import dora.http.DoraCallback
-import dora.http.retrofit.DoraRetrofitManager
+import dora.http.retrofit.RetrofitManager
 
 @Repository(isListMode = false)
 class WeatherRepository(context: Context) : DoraMemoryCacheRepository<WeatherModel>(context) {
@@ -14,7 +14,7 @@ class WeatherRepository(context: Context) : DoraMemoryCacheRepository<WeatherMod
     var latlng: String = ""
 
     override fun onLoadFromNetwork(callback: DoraCallback<WeatherModel>) {
-        DoraRetrofitManager.getService(WeatherService::class.java).getWeather(latlng).enqueue(callback)
+        RetrofitManager.getService(WeatherService::class.java).getWeather(latlng).enqueue(callback)
     }
 
     override val cacheName: String

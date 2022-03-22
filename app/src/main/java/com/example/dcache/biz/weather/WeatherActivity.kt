@@ -14,7 +14,7 @@ import com.example.dcache.R
 import dora.http.DoraHttp.net
 import dora.http.DoraHttp.request
 import dora.http.log.FormatLogInterceptor
-import dora.http.retrofit.DoraRetrofitManager
+import dora.http.retrofit.RetrofitManager
 import java.io.*
 
 class WeatherActivity : AppCompatActivity() {
@@ -29,7 +29,7 @@ class WeatherActivity : AppCompatActivity() {
         recyclerView.layoutManager = GridLayoutManager(this, 5)
         val adapter = TemperatureAdapter()
         recyclerView.adapter = adapter
-        DoraRetrofitManager.init {
+        RetrofitManager.init {
             okhttp {
                 interceptors().add(FormatLogInterceptor())
                 this

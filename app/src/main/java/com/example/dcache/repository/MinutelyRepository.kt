@@ -6,7 +6,7 @@ import com.example.dcache.model.MinutelyModel
 import dora.cache.repository.DoraDatabaseCacheRepository
 import dora.cache.repository.Repository
 import dora.http.DoraCallback
-import dora.http.retrofit.DoraRetrofitManager
+import dora.http.retrofit.RetrofitManager
 
 @Repository(isListMode = false)
 class MinutelyRepository(context: Context) : DoraDatabaseCacheRepository<MinutelyModel>(context) {
@@ -14,6 +14,6 @@ class MinutelyRepository(context: Context) : DoraDatabaseCacheRepository<Minutel
     var latlng: String = ""
 
     override fun onLoadFromNetwork(callback: DoraCallback<MinutelyModel>) {
-        DoraRetrofitManager.getService(WeatherService::class.java).getMinutely(latlng).enqueue(callback)
+        RetrofitManager.getService(WeatherService::class.java).getMinutely(latlng).enqueue(callback)
     }
 }

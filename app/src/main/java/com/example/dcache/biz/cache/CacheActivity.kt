@@ -8,7 +8,7 @@ import com.example.dcache.R
 import com.example.dcache.biz.weather.WeatherService
 import com.example.dcache.repository.*
 import dora.http.log.FormatLogInterceptor
-import dora.http.retrofit.DoraRetrofitManager
+import dora.http.retrofit.RetrofitManager
 
 class CacheActivity : AppCompatActivity() {
 
@@ -31,7 +31,7 @@ class CacheActivity : AppCompatActivity() {
         val tvCacheMinutely = findViewById<TextView>(R.id.tvCacheMinutely)
         val tvCacheHourly = findViewById<TextView>(R.id.tvCacheHourly)
         val tvCacheDaily = findViewById<TextView>(R.id.tvCacheDaily)
-        DoraRetrofitManager.init {
+        RetrofitManager.init {
             okhttp {
                 interceptors().add(FormatLogInterceptor())
                 this

@@ -10,7 +10,7 @@ import dora.db.builder.Condition
 import dora.db.builder.WhereBuilder
 import dora.http.DoraCallback
 import dora.http.DoraListCallback
-import dora.http.retrofit.DoraRetrofitManager
+import dora.http.retrofit.RetrofitManager
 
 @Repository(isListMode = true, isLogPrint = true)
 class TemperatureRepository(context: Context) : DoraDatabaseCacheRepository<Temperature>(context) {
@@ -19,17 +19,13 @@ class TemperatureRepository(context: Context) : DoraDatabaseCacheRepository<Temp
     var addr: String = ""
 
     override fun where(): Condition {
-        // 数据平移原则，通过latlng进行清除和读取
-        // 原来的数据库版本：  0 1 2 3 4
-        // 第2天：            1 2 3 4 5  （有网，清除0 1 2 3 4）， 0 1 2 3 4（无网，显示数据库的数据版本）
-        // 第3天：              2 3 4 5 6（有网，清除0 1 2 3 4）， 0 1 2 3 4（无网，显示数据库的数据版本）
         return WhereBuilder.create().addWhereEqualTo("latlng", latlng)
                 .andWhereEqualTo("addr", addr).toCondition()
     }
 
     override fun onLoadFromNetwork(callback: DoraListCallback<Temperature>) {
         // 适配数据
-        DoraRetrofitManager.getService(WeatherService::class.java).getDaily(latlng).enqueue(object
+        RetrofitManager.getService(WeatherService::class.java).getDaily(latlng).enqueue(object
             : DoraCallback<DailyModel>() {
 
             override fun onFailure(code: Int, msg: String?) {

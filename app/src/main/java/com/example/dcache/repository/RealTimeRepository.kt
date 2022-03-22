@@ -6,7 +6,7 @@ import com.example.dcache.model.RealTimeModel
 import dora.cache.repository.DoraDatabaseCacheRepository
 import dora.cache.repository.Repository
 import dora.http.DoraCallback
-import dora.http.retrofit.DoraRetrofitManager
+import dora.http.retrofit.RetrofitManager
 
 @Repository(isListMode = false)
 class RealTimeRepository(context: Context) : DoraDatabaseCacheRepository<RealTimeModel>(context) {
@@ -14,6 +14,6 @@ class RealTimeRepository(context: Context) : DoraDatabaseCacheRepository<RealTim
     var latlng: String = ""
 
     override fun onLoadFromNetwork(callback: DoraCallback<RealTimeModel>) {
-        DoraRetrofitManager.getService(WeatherService::class.java).getRealTime(latlng).enqueue(callback)
+        RetrofitManager.getService(WeatherService::class.java).getRealTime(latlng).enqueue(callback)
     }
 }

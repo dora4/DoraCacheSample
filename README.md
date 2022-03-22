@@ -198,10 +198,10 @@ api "com.github.dora4:dcache-android:$latest_version"
 
        - Kotlin配置
 
-         你可以通过调用DoraRetrofitManager的init方法进行网络请求的相关配置。
+         你可以通过调用RetrofitManager的init方法进行网络请求的相关配置。
 
          ```kotlin
-             DoraRetrofitManager.init {
+             RetrofitManager.init {
                      okhttp {
                          authenticator(Authenticator.NONE)
                          cookieJar(CookieJar.NO_COOKIES)
@@ -214,15 +214,15 @@ api "com.github.dora4:dcache-android:$latest_version"
                  }
          ```
 
-         也可以通过扩展BaseRetrofitManager来进行url和服务的注册。
+         也可以通过扩展JRetrofitManager来进行url和服务的注册。
 
        - Java配置
 
          ```java
          // 配置client
-         DoraRetrofitManager.INSTANCE.setClient(new OkHttpClient());
+         JRetrofitManager.client = new OkHttpClient();
          // 配置url
-         DoraRetrofitManager.INSTANCE.getConfig()
+         JRetrofitManager.config
                      .registerBaseUrl(TestService.class, "http://api.k780.com")
                      .registerBaseUrl(AccountService.class, "http://github.com/dora4");
          ```

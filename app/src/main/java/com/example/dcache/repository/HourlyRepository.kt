@@ -6,7 +6,7 @@ import com.example.dcache.model.HourlyModel
 import dora.cache.repository.DoraDatabaseCacheRepository
 import dora.cache.repository.Repository
 import dora.http.DoraCallback
-import dora.http.retrofit.DoraRetrofitManager
+import dora.http.retrofit.RetrofitManager
 
 @Repository(isListMode = false)
 class HourlyRepository(context: Context) : DoraDatabaseCacheRepository<HourlyModel>(context) {
@@ -14,6 +14,6 @@ class HourlyRepository(context: Context) : DoraDatabaseCacheRepository<HourlyMod
     var latlng: String = ""
 
     override fun onLoadFromNetwork(callback: DoraCallback<HourlyModel>) {
-        DoraRetrofitManager.getService(WeatherService::class.java).getHourly(latlng).enqueue(callback)
+        RetrofitManager.getService(WeatherService::class.java).getHourly(latlng).enqueue(callback)
     }
 }

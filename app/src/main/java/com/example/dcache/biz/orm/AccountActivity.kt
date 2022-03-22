@@ -12,7 +12,7 @@ import dora.db.builder.QueryBuilder
 import dora.db.dao.DaoFactory
 import dora.db.table.OrmTable
 import dora.http.log.FormatLogInterceptor
-import dora.http.retrofit.DoraRetrofitManager
+import dora.http.retrofit.RetrofitManager
 import okhttp3.Authenticator
 import okhttp3.CookieJar
 import java.util.*
@@ -69,7 +69,7 @@ class AccountActivity : AppCompatActivity() {
 //        val count = DaoFactory.getDao(Account::class.java).selectCount()
         val accounts = DaoFactory.getDao(Account::class.java).selectAll()
         adapter.setAccounts(accounts)
-        DoraRetrofitManager.init {
+        RetrofitManager.init {
             okhttp {
                 authenticator(Authenticator.NONE)
                 cookieJar(CookieJar.NO_COOKIES)
