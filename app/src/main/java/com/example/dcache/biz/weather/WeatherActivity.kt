@@ -29,10 +29,10 @@ class WeatherActivity : AppCompatActivity() {
         recyclerView.layoutManager = GridLayoutManager(this, 5)
         val adapter = TemperatureAdapter()
         recyclerView.adapter = adapter
-        RetrofitManager.init {
+        RetrofitManager.initConfig {
             okhttp {
                 interceptors().add(FormatLogInterceptor())
-                this
+                build()
             }
             registerBaseUrl(
                 WeatherService::class.java,

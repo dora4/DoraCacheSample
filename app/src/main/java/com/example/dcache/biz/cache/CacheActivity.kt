@@ -9,6 +9,7 @@ import com.example.dcache.biz.weather.WeatherService
 import com.example.dcache.repository.*
 import dora.http.log.FormatLogInterceptor
 import dora.http.retrofit.RetrofitManager
+import okhttp3.OkHttpClient
 
 class CacheActivity : AppCompatActivity() {
 
@@ -31,11 +32,9 @@ class CacheActivity : AppCompatActivity() {
         val tvCacheMinutely = findViewById<TextView>(R.id.tvCacheMinutely)
         val tvCacheHourly = findViewById<TextView>(R.id.tvCacheHourly)
         val tvCacheDaily = findViewById<TextView>(R.id.tvCacheDaily)
-        RetrofitManager.init {
-            okhttp {
-                interceptors().add(FormatLogInterceptor())
-                this
-            }
+        RetrofitManager.initConfig {
+            builder.interceptors().add(FormatLogInterceptor())
+            setClient(builder.build())
             registerBaseUrl(
                     WeatherService::class.java,
                     "https://api.caiyunapp.com/v2.5/Pezyxsyn6yccBaZd/"

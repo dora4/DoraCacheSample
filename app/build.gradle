@@ -43,7 +43,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'com.github.JackWHLiu:jackknife:1.0'
 
-    def latest_version = '1.2.2'
+    def latest_version = '1.2.6'
 //    api "com.github.dora4:dcache-android:$latest_version"
     api (name: "dcache-v${latest_version}@debug", ext: 'aar')
 

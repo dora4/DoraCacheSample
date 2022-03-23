@@ -39,11 +39,9 @@ class PachongActivity : AppCompatActivity() {
                 Toast.makeText(this, "正在跑呢", Toast.LENGTH_SHORT).show()
             }
         }
-        RetrofitManager.init {
-            okhttp {
-                interceptors().add(FormatLogInterceptor())
-                this
-            }
+        RetrofitManager.initConfig {
+            builder.interceptors().add(FormatLogInterceptor())
+            setClient(builder.build())
             registerBaseUrl(
                     WeatherService::class.java,
                     "https://api.caiyunapp.com/v2.5/Pezyxsyn6yccBaZd/"

@@ -69,12 +69,12 @@ class AccountActivity : AppCompatActivity() {
 //        val count = DaoFactory.getDao(Account::class.java).selectCount()
         val accounts = DaoFactory.getDao(Account::class.java).selectAll()
         adapter.setAccounts(accounts)
-        RetrofitManager.init {
+        RetrofitManager.initConfig {
             okhttp {
                 authenticator(Authenticator.NONE)
                 cookieJar(CookieJar.NO_COOKIES)
                 networkInterceptors().add(FormatLogInterceptor())
-                this
+                build()
             }
 //            registerBaseUrl(TestService::class.java, "http://api.k780.com")
             registerBaseUrl(AccountService::class.java, "http://github.com/dora4")
