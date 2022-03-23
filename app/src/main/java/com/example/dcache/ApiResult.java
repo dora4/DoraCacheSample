@@ -1,6 +1,6 @@
 package com.example.dcache;
 
-import dora.cache.data.result.Result;
+import dora.cache.data.adapter.Result;
 
 public class ApiResult<M> implements Result<M> {
 
