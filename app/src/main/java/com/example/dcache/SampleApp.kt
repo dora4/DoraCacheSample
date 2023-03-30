@@ -10,9 +10,9 @@ import com.example.dcache.model.MinutelyModel
 import com.example.dcache.model.RealTimeModel
 import com.example.dcache.model.common.Temperature
 import com.lwh.jackknife.CrashReport
-import dora.cache.MemoryCache
 import dora.db.Orm
 import dora.db.OrmConfig
+import dora.http.retrofit.RetrofitManager
 
 class SampleApp : Application() {
 
@@ -30,6 +30,5 @@ class SampleApp : Application() {
                     Temperature::class.java)
                 .version(1)
                 .build())
-        MemoryCache.scan(WeatherRepository::class.java)
     }
 }

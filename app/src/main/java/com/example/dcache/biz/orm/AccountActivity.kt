@@ -39,7 +39,8 @@ class AccountActivity : AppCompatActivity() {
 //        })
 //        .accept(DefaultPageDataVisitor<Account>())
         ivAccAdd.setOnClickListener {
-            DaoFactory.getDao(Account::class.java).insert(Account(generateAccKey(),
+            DaoFactory.getDao(Account::class.java)
+                .insert(Account(generateAccKey(),
                     "D" + generateAccKey(), "P" + generateAccKey()))
 //            DaoFactory.getDao(Account::class.java).update(Account("这个是key",
 //                    "D"+generateAccKey(), "P"+generateAccKey()))

@@ -36,7 +36,7 @@ class Account : OrmTable {
         this.accValue = accValue
     }
 
-    override val primaryKey: PrimaryKeyEntity
+    override val primaryKey: PrimaryKeyEntry
         get() = PrimaryKeyId(id)
 
     override val isUpgradeRecreated: Boolean

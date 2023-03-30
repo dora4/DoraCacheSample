@@ -3,7 +3,6 @@ package com.example.dcache.biz.weather
 import android.content.Context
 import com.example.dcache.model.DailyModel
 import com.example.dcache.model.common.Temperature
-import dora.cache.repository.BaseNoCacheRepository
 import dora.cache.repository.DoraDatabaseCacheRepository
 import dora.cache.repository.Repository
 import dora.db.builder.Condition
@@ -28,8 +27,8 @@ class TemperatureRepository(context: Context) : DoraDatabaseCacheRepository<Temp
         RetrofitManager.getService(WeatherService::class.java).getDaily(latlng).enqueue(object
             : DoraCallback<DailyModel>() {
 
-            override fun onFailure(code: Int, msg: String?) {
-                callback.onFailure(code, msg)
+            override fun onFailure(msg: String) {
+                callback.onFailure(msg)
             }
 
             override fun onSuccess(model: DailyModel) {

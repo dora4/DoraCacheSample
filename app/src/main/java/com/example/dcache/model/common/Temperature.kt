@@ -6,7 +6,7 @@ package com.example.dcache.model.common
 import dora.db.constraint.NotNull
 import dora.db.table.Id
 import dora.db.table.OrmTable
-import dora.db.table.PrimaryKeyEntity
+import dora.db.table.PrimaryKeyEntry
 import dora.db.table.PrimaryKeyId
 
 /**
@@ -33,7 +33,7 @@ class Temperature : OrmTable {
 
     override val isUpgradeRecreated: Boolean
         get() = false
-    override val primaryKey: PrimaryKeyEntity
+    override val primaryKey: PrimaryKeyEntry
         get() = PrimaryKeyId(id)
 
     override fun toString(): String {

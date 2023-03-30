@@ -60,7 +60,7 @@ class WeatherActivity : AppCompatActivity() {
                     // 子线程
                     repository.latlng = "${it[1]},${it[2]}"
                     repository.addr = it[6]
-                    repository.fetchListData()
+                    repository.fetchListData("天气预报")
                     Thread.sleep(3000)
                 }
             }

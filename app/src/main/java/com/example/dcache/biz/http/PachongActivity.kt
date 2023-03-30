@@ -73,8 +73,9 @@ class PachongActivity : AppCompatActivity() {
 
     private fun printLine(tvPrint: TextView, addr: String, model: DailyModel?) {
         if (model != null) {
-            tvPrint.append("$addr:${model!!.result!!.daily!!.temperature!![0]!!.min.toInt()}°/${model!!
-                    .result!!.daily!!.temperature!![0]!!.max.toInt()}°\n")
+            tvPrint.append("$addr:${model.result!!.daily!!.temperature!![0].min.toInt()}°/${
+                model
+                    .result!!.daily!!.temperature!![0].max.toInt()}°\n")
         } else {
             tvPrint.append("$addr:null\n")
         }

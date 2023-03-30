@@ -6,6 +6,7 @@ import com.example.dcache.model.MinutelyModel
 import com.example.dcache.model.RealTimeModel
 import com.example.dcache.model.WeatherModel
 import dora.http.retrofit.ApiService
+import io.reactivex.Observable
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -25,7 +26,7 @@ interface WeatherService : ApiService {
     fun getMinutely(@Path("latlng") latlng: String) : Call<MinutelyModel>
 
     @GET("{latlng}/hourly.json")
-    fun getHourly(@Path("latlng") latlng: String) : Call<HourlyModel>
+    fun getHourly(@Path("latlng") latlng: String) : Observable<HourlyModel>
 
     @GET("{latlng}/daily.json")
     fun getDaily(@Path("latlng") latlng: String) : Call<DailyModel>

@@ -2,11 +2,11 @@ package com.example.dcache;
 
 import android.content.Context;
 
+import androidx.annotation.NonNull;
+
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
-
-import javax.sql.DataSource;
 
 import dora.cache.data.adapter.ListResultAdapter;
 import dora.cache.data.adapter.ResultAdapter;
@@ -22,7 +22,7 @@ public class JavaRepository extends DoraDatabaseCacheRepository<JavaModel> {
     }
 
     @Override
-    protected void onInterceptData(@NotNull DataSource.Type type, @NotNull List<? extends JavaModel> models) {
+    protected void onInterceptData(@NonNull DataSource.Type type, @NonNull List<JavaModel> models) {
         super.onInterceptData(type, models);
     }
 

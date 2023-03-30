@@ -13,7 +13,7 @@ class Daily {
     var status: String? = null
 //    var astro: List<Astro>? = null
 //    var precipitation: List<Precipitation>? = null
-    var temperature: List<Temperature>? = null
+    var temperature: MutableList<Temperature>? = null
 //    var wind: List<Wind>? = null
 //    var humidity: List<Humidity>? = null
 //    var cloudrate: List<Cloudrate>? = null

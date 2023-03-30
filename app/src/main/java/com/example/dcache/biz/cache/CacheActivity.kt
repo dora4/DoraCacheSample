@@ -55,7 +55,7 @@ class CacheActivity : AppCompatActivity() {
 //            }
 //        })
         minutelyRepository.latlng = "116.407526,39.90403"
-        minutelyRepository.fetchData().observe(this, Observer {
+        minutelyRepository.fetchData("按分钟统计天气").observe(this, Observer {
             it?.apply {
                 tvCacheMinutely.text = "minutely:${toString()}\n"
             }

@@ -36,14 +36,14 @@ class WeatherModel : OrmTable {
     val server_time: Long = 0
     // 如39.90403,116.407526
     @Convert(converter = DoubleListConverter::class, columnType = String::class)
-    val location: List<Double>? = null
+    val location: MutableList<Double>? = null
 
     @Convert(converter = ResultJsonConverter::class, columnType = String::class)
     val result: Result? = null
 
     override val isUpgradeRecreated: Boolean
         get() = false
-    override val primaryKey: PrimaryKeyEntity
+    override val primaryKey: PrimaryKeyEntry
         get() = PrimaryKeyId(id)
 
     override fun toString(): String {

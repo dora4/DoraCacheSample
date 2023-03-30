@@ -27,13 +27,13 @@ class MinutelyModel : OrmTable {
     var server_time: Long = 0
 
     @Convert(converter = DoubleListConverter::class, columnType = String::class)
-    var location: List<Double>? = null
+    var location: MutableList<Double>? = null
 
     @Convert(converter = ResultJsonConverter::class, columnType = String::class)
     var result: Result? = null
     override val isUpgradeRecreated: Boolean
         get() = false
-    override val primaryKey: PrimaryKeyEntity
+    override val primaryKey: PrimaryKeyEntry
         get() = PrimaryKeyId(id)
 
     override fun toString(): String {

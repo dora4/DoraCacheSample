@@ -3,7 +3,7 @@ package com.example.dcache;
 import org.jetbrains.annotations.NotNull;
 
 import dora.db.table.OrmTable;
-import dora.db.table.PrimaryKeyEntity;
+import dora.db.table.PrimaryKeyEntry;
 
 public class JavaModel implements OrmTable {
 
@@ -14,7 +14,7 @@ public class JavaModel implements OrmTable {
 
     @NotNull
     @Override
-    public PrimaryKeyEntity getPrimaryKey() {
+    public PrimaryKeyEntry getPrimaryKey() {
         return null;
     }
 }
