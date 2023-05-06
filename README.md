@@ -207,8 +207,8 @@ api "com.github.dora4:dcache-android:$latest_version"
                          networkInterceptors().add(FormatLogInterceptor())
                          this
                      }
-                     registerBaseUrl(TestService::class.java, "http://api.k780.com")
-               			registerBaseUrl(AccountService::class.java, "http://github.com/dora4")
+                     mappingBaseUrl(TestService::class.java, "http://api.k780.com")
+               			mappingBaseUrl(AccountService::class.java, "http://github.com/dora4")
                  }
          ```
 
