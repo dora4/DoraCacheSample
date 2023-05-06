@@ -1,8 +1,6 @@
-# DoraCache使用文档V1.1.0
+# DoraCache使用文档V1.7.1
 
-简介：一个使用在Android平台的数据缓存框架，支持将model数据从后端接口下载后，简单的配置即可自动映射到数据库，并在断网的情况下可以离线读取。
-
-
+简介：dcache是一个开源的Android离线数据缓存框架，旨在提供一种简单而高效的方式来缓存网络请求的结果和其他数据，以便在手机没有网络的时候使用历史缓存数据。它可以用于缓存各种类型的数据，包括字符串、JSON、图片、音频和视频等。
 
 ### 运行截图
 
@@ -12,7 +10,7 @@
 
 #### 开发环境
 
-Android Studio、gradle
+Android Studio、Gradle
 
 #### 需要具备的技能
 
@@ -143,10 +141,10 @@ api "com.github.dora4:dcache-android:$latest_version"
    - 查询记录数
 
      ```kotlin
-     val count = DaoFactory.getDao(Account::class.java).selectCount()
+     val count = DaoFactory.getDao(Account::class.java).count()
      ```
 
-     通过selectCount查询符合查询条件的记录条数。
+     通过count查询符合查询条件的记录条数。
 
 4. **其他注意事项**
 
@@ -219,10 +217,10 @@ api "com.github.dora4:dcache-android:$latest_version"
        - Java配置
 
          ```java
-         // 配置client
-         JRetrofitManager.client = new OkHttpClient();
          // 配置url
-         JRetrofitManager.config
+         RetrofitManager.getConfig()
+           					.setClient(okhttpClient)
+           					.rxJava(true)
                      .registerBaseUrl(TestService.class, "http://api.k780.com")
                      .registerBaseUrl(AccountService.class, "http://github.com/dora4");
          ```
@@ -233,17 +231,30 @@ api "com.github.dora4:dcache-android:$latest_version"
 
        - Token拦截器
 
-         你可以直接给DoraRetrofitManager的client添加一个token拦截器来拦截token。
+         你可以直接给RetrofitManager的client添加一个token拦截器来拦截token。
 
        - 格式化输出响应数据到日志
 
          你可以添加dora.http.log.FormatLogInterceptor来将响应数据以日志形式格式化输出。
+         
+         
 
+   - API服务相关
+
+     我们通过RetrofitManager来管理服务，API服务即继承了ApiService接口的Retrofit的API接口。只有一个接口继承了ApiService接口，才能被RetrofitManager管理。
+     
+     | RetrofitManager的方法 | 描述                                                         |
+     | --------------------- | ------------------------------------------------------------ |
+     | checkService          | 检测一个API服务是否可用，如果不可用，则通过mappingBaseUrl()进行注册 |
+     | getService            | 获取API服务对象                                              |
+     | removeService         | 移除API服务对象                                              |
+     | mappingBaseUrl        | 给API服务绑定base url                                        |
+     
    - 开始使用
 
      ```kotlin
              // 方式一：并行请求，直接调用即可
-             DoraRetrofitManager.getService(AccountService::class.java).getAccount()
+             RetrofitManager.getService(AccountService::class.java).getAccount()
                      .enqueue(object : DoraCallback<Account>() {
       
                          override fun onFailure(code: Int, msg: String?) {
@@ -255,10 +266,10 @@ api "com.github.dora4:dcache-android:$latest_version"
              // 方式二：串行请求，在net作用域内的api请求，可以很方便的进行数据的合并处理，推荐使用
              net {
                  val account1 = api {
-                     DoraRetrofitManager.getService(AccountService::class.java).getAccount()
+                     RetrofitManager.getService(AccountService::class.java).getAccount()
                  }
                  val account2 = result {
-                     DoraRetrofitManager.getService(AccountService::class.java).getAccount()
+                     RetrofitManager.getService(AccountService::class.java).getAccount()
                  }
              }
      ```
@@ -273,12 +284,12 @@ api "com.github.dora4:dcache-android:$latest_version"
    
      request：用来自己执行网络请求，比如自己使用okhttp进行请求。
    
-     api：使用DoraRetrofitManager请求，如果执行失败，会抛出异常，你需要捕获DoraHttpException来查看异常信息。
+     api：使用RetrofitManager请求，如果执行失败，会抛出异常，你需要捕获DoraHttpException来查看异常信息。
    
      ```kotlin
      val testRequest = try {
                      api {
-                         DoraRetrofitManager
+                         RetrofitManager
                                  .getService(TestService::class.java).testRequest()
                      }
                  } catch (e: DoraHttpException) {
@@ -290,7 +301,7 @@ api "com.github.dora4:dcache-android:$latest_version"
    
      ```kotlin
      val testRequest3 = result {
-                     DoraRetrofitManager
+                     RetrofitManager
                              .getService(TestService::class.java).testRequest()
                  }
      ```
@@ -301,18 +312,18 @@ api "com.github.dora4:dcache-android:$latest_version"
      net {
                  val testRequest = try {
                      api {
-                         DoraRetrofitManager
+                         RetrofitManager
                                  .getService(TestService::class.java).testRequest()
                      }
                  } catch (e: DoraHttpException) {
                      Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show()
                  }
                  val testRequest2 = api {
-                     DoraRetrofitManager
+                     RetrofitManager
                              .getService(TestService::class.java).testRequest()
                  }
                  val testRequest3 = result {
-                     DoraRetrofitManager
+                     RetrofitManager
                              .getService(TestService::class.java).testRequest()
                  }
                  Toast.makeText(this, "$testRequest--$testRequest2--$testRequest3", Toast.LENGTH_SHORT).show()
@@ -337,7 +348,7 @@ api "com.github.dora4:dcache-android:$latest_version"
 
    ```kotlin
        val repository = AccountRepository(this, Account::class.java)
-           repository.fetchListData().observe(this,
+           repository.fetchListData("接口描述信息").observe(this,
                Observer<List<Account>> {
    
                })
@@ -416,19 +427,9 @@ api "com.github.dora4:dcache-android:$latest_version"
    }
    ```
 
-#### 四、支持开源项目
+你也可以使用官方提供的dcache扩展包来更换数据库orm框架。
 
-如果帮您节省了大量的开发时间，对您有所帮助，欢迎您的赞赏！
-
-捐赠虚拟货币
-
-| 币种           | 钱包地址                                   | 备注                                                        |
-| -------------- | ------------------------------------------ | ----------------------------------------------------------- |
-| 柚子(EOS)      | doramusic123                               | TAG中直接填写你的github用户名                               |
-| USDT(TRC-20链) | TYVXzqctSSPSTeVPYg7i7qbEtSxwrAJQ5y         | 发送你的钱包地址和github用户名至邮箱dora924666990@gmail.com |
-| 以太坊(ETH)    | 0x5dA12D7DB7B5D6C8D2Af78723F6dCE4A3C89caB9 | 发送你的钱包地址和github用户名至邮箱dora924666990@gmail.com |
-
-捐赠价值大于等于1 EOS 或 5 USDT 或 0.003 ETH 即可加入到开源项目开发团队，一起为dcache的发展而努力。加入SSH key，请发送你的github用户名，以及你的SSH key至邮箱dora924666990@gmail.com，被采纳的提交将有机会获得EOS的奖励，具体方案待定。
-
-注：所有捐赠的虚拟货币被存放在单独的账户中，将用于奖励未来的代码贡献者。
-
+```groovy
+implementation 'com.github.dora4:dcache-room-support:1.0'
+implementation 'com.github.dora4:dcache-greendao-support:1.0'
+```
