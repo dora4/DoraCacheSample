@@ -188,7 +188,7 @@ api "com.github.dora4:dcache-android:$latest_version"
 
    - 按模块对接口进行分类
 
-     所有api接口必须实现ApiService，才可以通过DoraRetrofitManager进行管理，业务模块分类后，将同一类url加入到相同的Service中，有助于职责的清晰划分。
+     所有api接口必须实现ApiService，才可以通过RetrofitManager进行管理，业务模块分类后，将同一类url加入到相同的Service中，有助于职责的清晰划分。
 
    - 基本配置
 
