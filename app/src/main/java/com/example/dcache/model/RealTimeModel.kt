@@ -6,6 +6,8 @@ package com.example.dcache.model
 import com.example.dcache.biz.weather.DoubleListConverter
 import com.example.dcache.biz.weather.ResultJsonConverter
 import com.example.dcache.model.common.Result
+import dora.db.constraint.Id
+import dora.db.migration.OrmMigration
 import dora.db.table.*
 
 /**
@@ -35,6 +37,8 @@ class RealTimeModel : OrmTable {
 
     override val isUpgradeRecreated: Boolean
         get() = false
+    override val migrations: Array<OrmMigration>
+        get() = arrayOf()
     override val primaryKey: PrimaryKeyEntry
         get() = PrimaryKeyId(id)
 

@@ -3,20 +3,23 @@ package com.example.dcache.biz.weather
 import android.content.Context
 import android.content.res.AssetManager
 import android.os.Bundle
+import android.os.SystemClock
 import android.util.Log
-import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dcache.R
+import dora.cache.data.fetcher.OnLoadStateListener
 import dora.http.DoraHttp.net
 import dora.http.DoraHttp.request
 import dora.http.log.FormatLogInterceptor
 import dora.http.retrofit.RetrofitManager
 import java.io.*
 
+/**
+ * 综合案例，演示一个天气预报功能，即使断网后也能再加载历史数据。
+ */
 class WeatherActivity : AppCompatActivity() {
 
     lateinit var repository: TemperatureRepository
@@ -31,18 +34,20 @@ class WeatherActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
         RetrofitManager.initConfig {
             okhttp {
+                // 添加一个格式化日志输出的拦截器
                 interceptors().add(FormatLogInterceptor())
                 build()
             }
-            registerBaseUrl(
+            // mappingBaseUrl取代了过时的registerBaseUrl，方便更换域名
+            mappingBaseUrl(
                 WeatherService::class.java,
                 "https://api.caiyunapp.com/v2.5/Pezyxsyn6yccBaZd/"
             )
         }
-        // 主线程
         repository.getListLiveData().observe(this, Observer {
             adapter.setTemperatures(it)
         })
+        // 开辟一个net作用域来执行协程
         net {
             readAssetsText(this, "adcode_test.csv")
         }
@@ -55,13 +60,25 @@ class WeatherActivity : AppCompatActivity() {
         var line: String? = ""
         while (bf.readLine().also { line = it } != null) {
             val value = line?.split(",")
-            value?.let {
+            value?.let { data ->
                 request {
-                    // 子线程
-                    repository.latlng = "${it[1]},${it[2]}"
-                    repository.addr = it[6]
-                    repository.fetchListData("天气预报")
-                    Thread.sleep(3000)
+                    Thread(Runnable {
+                        repository.latlng = "${data[1]},${data[2]}"
+                        repository.addr = data[6]
+                        // 边加载和显示数据，边缓存数据到数据库，它的数据在onCreate的以下中代码被观察
+                        // repository.getListLiveData().observe(this, Observer {
+                        //    adapter.setTemperatures(it)
+                        // })
+                        repository.fetchListData(listener = object : OnLoadStateListener {
+                            override fun onLoad(state: Int) {
+                                Log.d("WeatherActivity", "数据是否加载成功：${state==0}")
+                                // 无论成功与失败，3秒后播报下一个城市
+                                SystemClock.sleep(3000)
+                                // 解除阻塞
+                                it.releaseLock(null)
+                            }
+                        }, description = null)
+                    }).start()
                 }
             }
         }

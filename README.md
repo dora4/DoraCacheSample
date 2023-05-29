@@ -1,4 +1,4 @@
-# DoraCache使用文档V1.7.1
+# DoraCache使用文档V1.7.6
 
 简介：dcache是一个开源的Android离线数据缓存框架，旨在提供一种简单而高效的方式来缓存网络请求的结果和其他数据，以便在手机没有网络的时候使用历史缓存数据。它可以用于缓存各种类型的数据，包括字符串、JSON、图片、音频和视频等。
 
@@ -325,6 +325,19 @@ api "com.github.dora4:dcache-android:$latest_version"
                  val testRequest3 = result {
                      RetrofitManager
                              .getService(TestService::class.java).testRequest()
+                 }
+                 val testRequest4 = request {
+                     // 你自己的网络请求
+                     var isSuccess = true
+                     if (isSuccess) {
+                        // 成功的回调里面要释放锁
+                        it.releaseLock()
+                     } else {
+                        // 失败的回调里面也要释放锁
+                        it.releaseLock()
+                     }      
+                     // 释放了锁后，request函数的代码执行就结束了，无论后面还有没有代码
+                     Log.e("这行代码不会被执行，你也可以释放锁来跳出循环，直接结束函数调用")
                  }
                  Toast.makeText(this, "$testRequest--$testRequest2--$testRequest3", Toast.LENGTH_SHORT).show()
              }

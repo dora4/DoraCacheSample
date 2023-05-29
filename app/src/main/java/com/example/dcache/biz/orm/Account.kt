@@ -1,9 +1,11 @@
 package com.example.dcache.biz.orm
 
 import dora.db.constraint.Default
+import dora.db.constraint.Id
 import dora.db.constraint.NotNull
 import dora.db.constraint.Unique
 import dora.db.converter.StringListConverter
+import dora.db.migration.OrmMigration
 import dora.db.table.*
 
 @Table("acc")
@@ -41,4 +43,6 @@ class Account : OrmTable {
 
     override val isUpgradeRecreated: Boolean
         get() = false
+    override val migrations: Array<OrmMigration>
+        get() = arrayOf()
 }

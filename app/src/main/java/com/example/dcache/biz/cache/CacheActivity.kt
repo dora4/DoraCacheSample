@@ -35,7 +35,7 @@ class CacheActivity : AppCompatActivity() {
         RetrofitManager.initConfig {
             builder.interceptors().add(FormatLogInterceptor())
             setClient(builder.build())
-            registerBaseUrl(
+            mappingBaseUrl(
                     WeatherService::class.java,
                     "https://api.caiyunapp.com/v2.5/Pezyxsyn6yccBaZd/"
             )

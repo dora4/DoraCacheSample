@@ -78,7 +78,7 @@ class AccountActivity : AppCompatActivity() {
                 build()
             }
 //            registerBaseUrl(TestService::class.java, "http://api.k780.com")
-            registerBaseUrl(AccountService::class.java, "http://github.com/dora4")
+            mappingBaseUrl(AccountService::class.java, "http://github.com/dora4")
         }
 //        net {
 //            val testRequest = try {

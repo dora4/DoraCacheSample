@@ -3,6 +3,7 @@ package com.example.dcache;
 import android.content.Context;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -10,10 +11,12 @@ import java.util.List;
 
 import dora.cache.data.adapter.ListResultAdapter;
 import dora.cache.data.adapter.ResultAdapter;
+import dora.cache.data.fetcher.OnLoadStateListener;
 import dora.cache.repository.DoraDatabaseCacheRepository;
 import dora.http.DoraCallback;
 import dora.http.DoraListCallback;
 import dora.http.retrofit.RetrofitManager;
+import io.reactivex.Observable;
 
 public class JavaRepository extends DoraDatabaseCacheRepository<JavaModel> {
 
@@ -32,14 +35,14 @@ public class JavaRepository extends DoraDatabaseCacheRepository<JavaModel> {
     }
 
     @Override
-    protected void onLoadFromNetwork(@NotNull DoraCallback<JavaModel> callback) {
-        super.onLoadFromNetwork(callback);
+    protected void onLoadFromNetwork(@NonNull DoraCallback<JavaModel> callback, @Nullable OnLoadStateListener listener) {
+        super.onLoadFromNetwork(callback, listener);
         RetrofitManager.INSTANCE.getService(ResultService.class).getResult().enqueue(new ResultAdapter(callback));
     }
 
     @Override
-    protected void onLoadFromNetwork(@NotNull DoraListCallback<JavaModel> callback) {
-        super.onLoadFromNetwork(callback);
+    protected void onLoadFromNetwork(@NonNull DoraListCallback<JavaModel> callback, @Nullable OnLoadStateListener listener) {
+        super.onLoadFromNetwork(callback, listener);
         RetrofitManager.INSTANCE.getService(ResultService.class).getResult().enqueue(new ListResultAdapter(callback));
     }
 }
