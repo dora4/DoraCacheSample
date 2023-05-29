@@ -326,7 +326,7 @@ api "com.github.dora4:dcache-android:$latest_version"
                      RetrofitManager
                              .getService(TestService::class.java).testRequest()
                  }
-                 val testRequest4 = request {
+                 request {
                      // 你自己的网络请求
                      var isSuccess = true
                      if (isSuccess) {
