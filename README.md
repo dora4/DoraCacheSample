@@ -22,5 +22,5 @@ def latest_version = '2.1.3'
 api "com.github.dora4:dcache-android:$latest_version"
 ```
 
-### 也看
+### dcache-android 地址
 https://github.com/dora4/dcache-android
