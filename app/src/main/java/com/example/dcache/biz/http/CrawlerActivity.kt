@@ -17,13 +17,13 @@ import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
 
-class PachongActivity : AppCompatActivity() {
+class CrawlerActivity : AppCompatActivity() {
 
     private var isRunning: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_pachong)
+        setContentView(R.layout.activity_crawler)
         val ivRun = findViewById<ImageView>(R.id.iv_run)
         val tvPrint = findViewById<TextView>(R.id.tv_print)
         ivRun.setOnClickListener {

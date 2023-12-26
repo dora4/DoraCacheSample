@@ -8,7 +8,6 @@ import com.example.dcache.model.HourlyModel
 import com.example.dcache.model.MinutelyModel
 import com.example.dcache.model.RealTimeModel
 import com.example.dcache.model.common.Temperature
-import com.lwh.jackknife.CrashReport
 import dora.db.Orm
 import dora.db.OrmConfig
 
@@ -20,7 +19,6 @@ class SampleApp : Application() {
     }
 
     private fun initConfig() {
-        CrashReport.init(this)
         Orm.init(this, OrmConfig.Builder()
                 .database("dcache_sample")
                 .tables(Account::class.java, WeatherModel::class.java, RealTimeModel::class.java,

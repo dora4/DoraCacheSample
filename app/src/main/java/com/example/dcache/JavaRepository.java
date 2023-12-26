@@ -16,7 +16,6 @@ import dora.cache.repository.DoraDatabaseCacheRepository;
 import dora.http.DoraCallback;
 import dora.http.DoraListCallback;
 import dora.http.retrofit.RetrofitManager;
-import io.reactivex.Observable;
 
 public class JavaRepository extends DoraDatabaseCacheRepository<JavaModel> {
 

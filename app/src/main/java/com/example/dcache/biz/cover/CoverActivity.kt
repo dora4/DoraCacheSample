@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.dcache.biz.orm.AccountActivity
 import com.example.dcache.R
 import com.example.dcache.biz.cache.CacheActivity
-import com.example.dcache.biz.http.PachongActivity
+import com.example.dcache.biz.http.CrawlerActivity
 import com.example.dcache.biz.weather.WeatherActivity
 
 /**
@@ -22,16 +22,16 @@ class CoverActivity : AppCompatActivity() {
         val rvCover = findViewById<RecyclerView>(R.id.rvCover)
         rvCover.layoutManager = GridLayoutManager(this, 2)
         val covers = arrayListOf(
-                CoverModel("网络爬虫测试", R.drawable.icon_pachong),
-                CoverModel("数据保存测试", R.drawable.icon_data),
-                CoverModel("数据缓存测试", R.drawable.icon_cache),
+                CoverModel("网络爬虫测试", R.drawable.icon_crawler),
+                CoverModel("数据保存测试", R.drawable.icon_storage),
+                CoverModel("数据缓存测试", R.drawable.icon_bucket),
                 CoverModel("天气案例", R.drawable.icon_weather)
         )
         val adapter = CoverAdapter(covers)
         adapter.onItemClick { pos, model ->
             when(pos) {
                 0 -> {
-                    startActivity(Intent(this, PachongActivity::class.java))
+                    startActivity(Intent(this, CrawlerActivity::class.java))
                 }
                 1 -> {
                     startActivity(Intent(this, AccountActivity::class.java))

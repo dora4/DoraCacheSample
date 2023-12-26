@@ -21,7 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.dcache.biz.http.PachongActivity"
+        <activity android:name="com.example.dcache.biz.http.CrawlerActivity"
             android:label="@string/cover_pachong_label"
             android:screenOrientation="portrait"/>
         <activity android:name="com.example.dcache.biz.orm.AccountActivity"

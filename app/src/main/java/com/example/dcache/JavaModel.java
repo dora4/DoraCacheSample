@@ -15,7 +15,7 @@ public class JavaModel implements OrmTable {
         return false;
     }
 
-    @NotNull
+    @NonNull
     @Override
     public PrimaryKeyEntry getPrimaryKey() {
         return null;
