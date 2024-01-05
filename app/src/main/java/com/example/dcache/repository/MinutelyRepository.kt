@@ -9,7 +9,7 @@ import dora.cache.repository.Repository
 import dora.http.DoraCallback
 import dora.http.retrofit.RetrofitManager
 
-@Repository(isListMode = false, isLogPrint = true)
+@Repository(isLogPrint = true)
 class MinutelyRepository(context: Context) : DoraDatabaseCacheRepository<MinutelyModel>(context) {
 
     var latlng: String = ""

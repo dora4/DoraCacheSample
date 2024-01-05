@@ -9,7 +9,7 @@ import dora.cache.repository.Repository
 import dora.http.retrofit.RetrofitManager
 import io.reactivex.Observable
 
-@Repository(isListMode = false)
+@Repository
 class HourlyRepository(context: Context) : DoraDatabaseCacheRepository<HourlyModel>(context) {
 
     var latlng: String = ""

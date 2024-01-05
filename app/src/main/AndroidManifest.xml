@@ -21,16 +21,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.dcache.biz.http.CrawlerActivity"
+        <activity
+            android:name="com.example.dcache.biz.http.CrawlerActivity"
             android:label="@string/cover_pachong_label"
             android:screenOrientation="portrait"/>
-        <activity android:name="com.example.dcache.biz.orm.AccountActivity"
-                    android:label="@string/cover_data_label"
-                    android:screenOrientation="portrait"/>
-        <activity android:name="com.example.dcache.biz.cache.CacheActivity"
+        <activity
+            android:name="com.example.dcache.biz.orm.AccountActivity"
+            android:label="@string/cover_data_label"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.dcache.biz.cache.CacheActivity"
             android:label="@string/cover_cache_label"
             android:screenOrientation="portrait"/>
-        <activity android:name="com.example.dcache.biz.weather.WeatherActivity"
+        <activity
+            android:name="com.example.dcache.biz.weather.WeatherActivity"
             android:label="@string/cover_weather_label"
             android:screenOrientation="portrait"/>
     </application>

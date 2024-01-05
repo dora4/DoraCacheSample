@@ -9,7 +9,7 @@ import dora.cache.repository.Repository
 import dora.http.DoraCallback
 import dora.http.retrofit.RetrofitManager
 
-@Repository(isListMode = false)
+@Repository
 class WeatherRepository(context: Context) : DoraDatabaseCacheRepository<WeatherModel>(context) {
 
     var latlng: String = ""
