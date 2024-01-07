@@ -7,6 +7,7 @@ import android.os.SystemClock
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dcache.R
@@ -44,9 +45,11 @@ class WeatherActivity : AppCompatActivity() {
                 "https://api.caiyunapp.com/v2.5/Pezyxsyn6yccBaZd/"
             )
         }
-        repository.getListLiveData().observe(this, Observer {
-            adapter.setTemperatures(it)
-        })
+        lifecycleScope.launchWhenCreated {
+            repository.getListFlowData().collect {
+                adapter.setTemperatures(it)
+            }
+        }
         // 开辟一个net作用域来执行协程
         net {
             readAssetsText(this, "adcode_test.csv")

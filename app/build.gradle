@@ -48,7 +48,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.7.2'
     implementation 'com.squareup.retrofit2:converter-gson:2.7.2'
 
-    def latest_version = '2.1.5'
+    def latest_version = '2.2.0'
     api "com.github.dora4:dcache-android:$latest_version"
 //    api (name: "dcache-release", ext: 'aar')
 }

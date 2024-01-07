@@ -5,6 +5,7 @@ import com.example.dcache.model.DailyModel
 import com.example.dcache.model.common.Temperature
 import dora.cache.data.fetcher.OnLoadStateListener
 import dora.cache.repository.DoraDatabaseCacheRepository
+import dora.cache.repository.DoraFlowDatabaseCacheRepository
 import dora.cache.repository.ListRepository
 import dora.db.builder.Condition
 import dora.db.builder.WhereBuilder
@@ -13,7 +14,7 @@ import dora.http.DoraListCallback
 import dora.http.retrofit.RetrofitManager
 
 @ListRepository(isLogPrint = true)
-class TemperatureRepository(context: Context) : DoraDatabaseCacheRepository<Temperature>(context) {
+class TemperatureRepository(context: Context) : DoraFlowDatabaseCacheRepository<Temperature>(context) {
 
     var latlng: String = ""
     var addr: String = ""
