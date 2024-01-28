@@ -12,11 +12,14 @@ import java.util.List;
 import dora.cache.data.adapter.ListResultAdapter;
 import dora.cache.data.adapter.ResultAdapter;
 import dora.cache.data.fetcher.OnLoadStateListener;
+import dora.cache.factory.DatabaseCacheHolderFactory;
 import dora.cache.repository.DoraDatabaseCacheRepository;
+import dora.cache.repository.Repository;
 import dora.http.DoraCallback;
 import dora.http.DoraListCallback;
 import dora.http.retrofit.RetrofitManager;
 
+@Repository
 public class JavaRepository extends DoraDatabaseCacheRepository<JavaModel> {
 
     public JavaRepository(@NotNull Context context) {
@@ -43,5 +46,11 @@ public class JavaRepository extends DoraDatabaseCacheRepository<JavaModel> {
     protected void onLoadFromNetwork(@NonNull DoraListCallback<JavaModel> callback, @Nullable OnLoadStateListener listener) {
         super.onLoadFromNetwork(callback, listener);
         RetrofitManager.INSTANCE.getService(ResultService.class).getResult().enqueue(new ListResultAdapter(callback));
+    }
+
+    @NonNull
+    @Override
+    protected DatabaseCacheHolderFactory<JavaModel> createCacheHolderFactory() {
+        return new DatabaseCacheHolderFactory<>(JavaModel.class);
     }
 }

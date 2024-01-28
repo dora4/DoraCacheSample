@@ -4,6 +4,7 @@ import android.content.Context
 import com.example.dcache.biz.weather.WeatherService
 import com.example.dcache.model.DailyModel
 import dora.cache.data.fetcher.OnLoadStateListener
+import dora.cache.factory.DatabaseCacheHolderFactory
 import dora.cache.repository.DoraDatabaseCacheRepository
 import dora.cache.repository.Repository
 import dora.http.DoraCallback
@@ -19,5 +20,9 @@ class DailyRepository(context: Context) : DoraDatabaseCacheRepository<DailyModel
         listener: OnLoadStateListener?
     ) {
         RetrofitManager.getService(WeatherService::class.java).getDaily(latlng).enqueue(callback)
+    }
+
+    override fun createCacheHolderFactory(): DatabaseCacheHolderFactory<DailyModel> {
+        return DatabaseCacheHolderFactory(DailyModel::class.java)
     }
 }

@@ -3,10 +3,10 @@ buildscript {
     ext.kotlin_version = "1.8.0"
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.1.1'
+        classpath 'com.android.tools.build:gradle:7.1.3'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -17,11 +17,11 @@ buildscript {
 allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
         maven { url 'https://jitpack.io' }
-        flatDir {
-            dirs '../dcache-android/dcache/build/outputs/aar'
-        }
+//        flatDir {
+//            dirs '../dcache-android/dcache/build/outputs/aar'
+//        }
     }
 }
 

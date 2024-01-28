@@ -4,7 +4,7 @@ import android.content.Context
 import com.example.dcache.model.DailyModel
 import com.example.dcache.model.common.Temperature
 import dora.cache.data.fetcher.OnLoadStateListener
-import dora.cache.repository.DoraDatabaseCacheRepository
+import dora.cache.factory.DatabaseCacheHolderFactory
 import dora.cache.repository.DoraFlowDatabaseCacheRepository
 import dora.cache.repository.ListRepository
 import dora.db.builder.Condition
@@ -18,6 +18,9 @@ class TemperatureRepository(context: Context) : DoraFlowDatabaseCacheRepository<
 
     var latlng: String = ""
     var addr: String = ""
+    override fun createCacheHolderFactory(): DatabaseCacheHolderFactory<Temperature> {
+        return DatabaseCacheHolderFactory(Temperature::class.java)
+    }
 
     override fun where(): Condition {
         return WhereBuilder.create().addWhereEqualTo("latlng", latlng)
