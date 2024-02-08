@@ -22,17 +22,17 @@ class Account : OrmTable {
 
     @Default("")
     @Column("acc_desc")
-    @Since(columnName = "acc_desc", version = 1)
+    @Since(version = 1)
     var accDesc: String? = null
 
     @NotNull
     @Column("acc_value")
-    @Since(columnName = "acc_value", version = 1)
+    @Since(version = 1)
     var accValue: String? = null
 
     @Ignore
     @Convert(converter = StringListConverter::class, columnType = String::class)
-    @Since(columnName = "acc_child_values", version = 1)
+    @Since(version = 1)
     @Column("acc_child_values")
     var accChildValues: List<String>? = null
 
