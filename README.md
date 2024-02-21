@@ -18,7 +18,7 @@ git clone https://github.com/dora4/dcache-android.git
 
 ```groovy
 // 依赖dcache
-def latest_version = '2.2.7'
+def latest_version = '2.2.9'
 api "com.github.dora4:dcache-android:$latest_version"
 ```
 
