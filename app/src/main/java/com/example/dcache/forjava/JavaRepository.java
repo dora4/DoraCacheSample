@@ -1,4 +1,4 @@
-package com.example.dcache;
+package com.example.dcache.forjava;
 
 import android.content.Context;
 
@@ -19,6 +19,9 @@ import dora.http.DoraCallback;
 import dora.http.DoraListCallback;
 import dora.http.retrofit.RetrofitManager;
 
+/**
+ * Repository的Java写法。
+ */
 @Repository
 public class JavaRepository extends DoraDatabaseCacheRepository<JavaModel> {
 
