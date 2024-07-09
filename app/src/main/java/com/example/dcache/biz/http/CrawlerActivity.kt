@@ -9,10 +9,12 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.dcache.R
 import com.example.dcache.biz.weather.WeatherService
 import com.example.dcache.model.DailyModel
-import dora.http.DoraHttp
 import dora.http.DoraHttp.net
+import dora.http.DoraHttp.result
 import dora.http.log.FormatLogInterceptor
 import dora.http.retrofit.RetrofitManager
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
@@ -55,7 +57,9 @@ class CrawlerActivity : AppCompatActivity() {
         val assetManager: AssetManager = context.assets
         val bf = BufferedReader(InputStreamReader(assetManager.open(fileName)))
         var line: String? = ""
-        while (bf.readLine().also { line = it } != null) {
+        while (withContext(Dispatchers.IO) {
+                bf.readLine()
+            }.also { line = it } != null) {
             val value = line?.split(",")
             value?.let {
                 loopPrint(tvPrint, "${it[1]},${it[2]}", it[6])
@@ -64,7 +68,7 @@ class CrawlerActivity : AppCompatActivity() {
     }
 
     private suspend fun loopPrint(tvPrint: TextView, latlng: String, addr: String) {
-        val ret = DoraHttp.result {
+        val ret = result {
             RetrofitManager.getService(WeatherService::class.java)
                     .getDaily(latlng)
         }

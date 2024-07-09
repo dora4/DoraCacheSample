@@ -71,8 +71,10 @@ class AccountActivity : AppCompatActivity() {
         adapter.setAccounts(accounts)
         RetrofitManager.initConfig {
             okhttp {
+                // 随便配置一下
                 authenticator(Authenticator.NONE)
                 cookieJar(CookieJar.NO_COOKIES)
+                // 配置日志格式化输出拦截器
                 networkInterceptors().add(FormatLogInterceptor())
                 build()
             }

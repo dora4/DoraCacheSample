@@ -10,13 +10,14 @@ import dora.db.table.*
 
 @Table("acc")
 class Account : OrmTable {
-    //Id注解将自动配置主键，且以_id命名
+
+    // @Id注解将自动配置主键，且列名以_id命名
     @Id
     val id: Long = 0
 
     @NotNull
     @Unique
-    @Since(columnName = "acc_key", version = 1)
+    @Since(version = 1)
     @Column("acc_key")
     var accKey: String? = null
 
@@ -30,6 +31,9 @@ class Account : OrmTable {
     @Since(version = 1)
     var accValue: String? = null
 
+    /**
+     * 跳过映射的属性。
+     */
     @Ignore
     @Convert(converter = StringListConverter::class, columnType = String::class)
     @Since(version = 1)

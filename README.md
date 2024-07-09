@@ -26,4 +26,4 @@ api "com.github.dora4:dcache-android:$latest_version"
 https://github.com/dora4/dcache-android
 
 
-Tip：BIP39助记词安全保存推荐使用[【隐私保险箱】](https://dorachat.oss-cn-hongkong.aliyuncs.com/Dora_Box_1.11.apk)🎉
+Tip：BIP39助记词安全保存推荐使用[【隐私保险箱】](https://dorachat.oss-cn-hongkong.aliyuncs.com/Dora_Box_1.12.apk)🎉
