@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.dcache.biz.orm.AccountActivity
+import com.example.dcache.biz.orm.OrmTestCaseActivity
 import com.example.dcache.R
 import com.example.dcache.biz.cache.CacheActivity
 import com.example.dcache.biz.http.CrawlerActivity
@@ -34,7 +34,7 @@ class CoverActivity : AppCompatActivity() {
                     startActivity(Intent(this, CrawlerActivity::class.java))
                 }
                 1 -> {
-                    startActivity(Intent(this, AccountActivity::class.java))
+                    startActivity(Intent(this, OrmTestCaseActivity::class.java))
                 }
                 2 -> {
                     startActivity(Intent(this, CacheActivity::class.java))

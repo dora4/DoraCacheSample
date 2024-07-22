@@ -1,7 +1,7 @@
 package com.example.dcache
 
 import android.app.Application
-import com.example.dcache.biz.orm.Account
+import com.example.dcache.biz.orm.TestCaseModel
 import com.example.dcache.model.WeatherModel
 import com.example.dcache.model.DailyModel
 import com.example.dcache.model.HourlyModel
@@ -21,9 +21,7 @@ class SampleApp : Application() {
     private fun initConfig() {
         Orm.init(this, OrmConfig.Builder()
                 .database("dcache_sample")
-                .tables(Account::class.java, WeatherModel::class.java, RealTimeModel::class.java,
-                    MinutelyModel::class.java, HourlyModel::class.java, DailyModel::class.java,
-                    Temperature::class.java)
+                .tables(TestCaseModel::class.java)
                 .version(1)
                 .build())
     }

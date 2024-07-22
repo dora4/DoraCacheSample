@@ -37,8 +37,6 @@ class MinutelyModel : OrmTable {
         get() = false
     override val migrations: Array<OrmMigration>
         get() = arrayOf()
-    override val primaryKey: PrimaryKeyEntry
-        get() = PrimaryKeyId(id)
 
     override fun toString(): String {
         return "MinutelyModel(id=$id, status=$status, api_version=$api_version, api_status=$api_status, lang=$lang, unit=$unit, tzshift=$tzshift, timezone=$timezone, server_time=$server_time, location=$location, result=$result)"

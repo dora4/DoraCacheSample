@@ -7,8 +7,6 @@ import dora.db.constraint.Id
 import dora.db.constraint.NotNull
 import dora.db.migration.OrmMigration
 import dora.db.table.OrmTable
-import dora.db.table.PrimaryKeyEntry
-import dora.db.table.PrimaryKeyId
 
 /**
  * Auto-generated: 2021-07-17 21:23:54
@@ -36,8 +34,6 @@ class Temperature : OrmTable {
         get() = false
     override val migrations: Array<OrmMigration>
         get() = arrayOf()
-    override val primaryKey: PrimaryKeyEntry
-        get() = PrimaryKeyId(id)
 
     override fun toString(): String {
         return "Temperature(id=$id, addr='$addr', latlng='$latlng', date=$date, max=$max, min=$min, avg=$avg)"

@@ -28,7 +28,12 @@
             android:exported="true"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="com.example.dcache.biz.orm.AccountActivity"
+            android:name="com.example.dcache.biz.orm.OrmTestCaseActivity"
+            android:label="@string/cover_data_label"
+            android:exported="true"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.dcache.biz.orm.OrmModelEditorActivity"
             android:label="@string/cover_data_label"
             android:exported="true"
             android:screenOrientation="portrait"/>
