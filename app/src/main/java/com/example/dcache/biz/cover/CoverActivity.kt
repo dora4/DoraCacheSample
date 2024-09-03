@@ -37,7 +37,7 @@ class CoverActivity : AppCompatActivity() {
                     startActivity(Intent(this, OrmTestCasesActivity::class.java))
                 }
                 2 -> {
-//                    startActivity(Intent(this, CrawlerActivity::class.java))
+                    startActivity(Intent(this, CrawlerActivity::class.java))
                 }
                 3 -> {
 //                    startActivity(Intent(this, CacheActivity::class.java))

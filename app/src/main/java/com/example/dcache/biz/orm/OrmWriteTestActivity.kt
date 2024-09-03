@@ -6,7 +6,6 @@ import android.widget.TextView
 import com.example.dcache.R
 import dora.db.builder.WhereBuilder
 import dora.db.dao.DaoFactory
-import dora.db.table.OrmTable
 import dora.http.DoraHttp.net
 import dora.http.DoraHttp.request
 import kotlin.random.Random
