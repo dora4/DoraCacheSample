@@ -2,12 +2,9 @@ package com.example.dcache
 
 import android.app.Application
 import com.example.dcache.biz.orm.TestCaseModel
-import com.example.dcache.model.WeatherModel
-import com.example.dcache.model.DailyModel
-import com.example.dcache.model.HourlyModel
-import com.example.dcache.model.MinutelyModel
-import com.example.dcache.model.RealTimeModel
-import com.example.dcache.model.common.Temperature
+import com.example.dcache.biz.orm.TestCaseModel2
+import com.example.dcache.biz.orm.TestCaseModel3
+import com.example.dcache.biz.tutorial.Tutorial
 import dora.db.Orm
 import dora.db.OrmConfig
 
@@ -21,7 +18,10 @@ class SampleApp : Application() {
     private fun initConfig() {
         Orm.init(this, OrmConfig.Builder()
                 .database("dcache_sample")
-                .tables(TestCaseModel::class.java)
+                .tables(Tutorial::class.java,
+                    TestCaseModel::class.java,
+                    TestCaseModel2::class.java,
+                    TestCaseModel3::class.java)
                 .version(1)
                 .build())
     }

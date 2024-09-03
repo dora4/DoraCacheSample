@@ -95,34 +95,34 @@ class OrmModelEditorActivity : AppCompatActivity() {
             ) {
                 if (menuName == "save") {
                     if (intent.action == "ACTION_UPDATE") {
-                        val testCaseModel = model!!
-                        testCaseModel.stringVal = ViewUtils.getText(menuPanel.getViewByPosition(0,
-                            InputMenuPanelItem.ID_EDIT_TEXT_INPUT) as EditText)
-                        testCaseModel.booleanVal = isOpen
-                        testCaseModel.shortVal = ViewUtils.getText(menuPanel.getViewByPosition(2,
-                        InputMenuPanelItem.ID_EDIT_TEXT_INPUT) as EditText).toShort()
-                        testCaseModel.intVal = ViewUtils.getText(menuPanel.getViewByPosition(3,
-                            InputMenuPanelItem.ID_EDIT_TEXT_INPUT) as EditText).toInt()
-                        testCaseModel.longVal = ViewUtils.getText(menuPanel.getViewByPosition(4,
-                            InputMenuPanelItem.ID_EDIT_TEXT_INPUT) as EditText).toLong()
-                        testCaseModel.floatVal = ViewUtils.getText(menuPanel.getViewByPosition(5,
-                            InputMenuPanelItem.ID_EDIT_TEXT_INPUT) as EditText).toFloat()
-                        testCaseModel.doubleVal = ViewUtils.getText(menuPanel.getViewByPosition(6,
-                            InputMenuPanelItem.ID_EDIT_TEXT_INPUT) as EditText).toDouble()
-                        if (DaoFactory.getDao(TestCaseModel::class.java).update(testCaseModel)) {
-                            ToastUtils.showShort("编辑成功")
-                            setResult(Activity.RESULT_OK)
-                            finish()
-                        } else {
-                            ToastUtils.showShort("编辑失败")
-                        }
+                        val testCaseModel = model
+                        testCaseModel?.stringVal = ViewUtils.getText(menuPanel.getViewByPosition(0,
+                            InputMenuPanelItem.ID_EDIT_TEXT_INPUT) as EditText
+                        )
+                        testCaseModel?.booleanVal = isOpen
+                        testCaseModel?.shortVal = ViewUtils.getText(menuPanel.getViewByPosition(2,
+                            InputMenuPanelItem.ID_EDIT_TEXT_INPUT) as EditText
+                        ).toShort()
+                        testCaseModel?.intVal = ViewUtils.getText(menuPanel.getViewByPosition(3,
+                            InputMenuPanelItem.ID_EDIT_TEXT_INPUT) as EditText
+                        ).toInt()
+                        testCaseModel?.longVal = ViewUtils.getText(menuPanel.getViewByPosition(4,
+                            InputMenuPanelItem.ID_EDIT_TEXT_INPUT) as EditText
+                        ).toLong()
+                        testCaseModel?.floatVal = ViewUtils.getText(menuPanel.getViewByPosition(5,
+                            InputMenuPanelItem.ID_EDIT_TEXT_INPUT) as EditText
+                        ).toFloat()
+                        testCaseModel?.doubleVal = ViewUtils.getText(menuPanel.getViewByPosition(6,
+                            InputMenuPanelItem.ID_EDIT_TEXT_INPUT) as EditText
+                        ).toDouble()
+                        intent.putExtra("model", testCaseModel)
                     } else {
                         val testCaseModel = TestCaseModel(menuName = MenuPanelItem.generateMenuName())
                         testCaseModel.stringVal = ViewUtils.getText(menuPanel.getViewByPosition(0,
                             InputMenuPanelItem.ID_EDIT_TEXT_INPUT) as EditText)
                         testCaseModel.booleanVal = isOpen
                         testCaseModel.shortVal = ViewUtils.getText(menuPanel.getViewByPosition(2,
-                        InputMenuPanelItem.ID_EDIT_TEXT_INPUT) as EditText).toShort()
+                            InputMenuPanelItem.ID_EDIT_TEXT_INPUT) as EditText).toShort()
                         testCaseModel.intVal = ViewUtils.getText(menuPanel.getViewByPosition(3,
                             InputMenuPanelItem.ID_EDIT_TEXT_INPUT) as EditText).toInt()
                         testCaseModel.longVal = ViewUtils.getText(menuPanel.getViewByPosition(4,
@@ -131,14 +131,10 @@ class OrmModelEditorActivity : AppCompatActivity() {
                             InputMenuPanelItem.ID_EDIT_TEXT_INPUT) as EditText).toFloat()
                         testCaseModel.doubleVal = ViewUtils.getText(menuPanel.getViewByPosition(6,
                             InputMenuPanelItem.ID_EDIT_TEXT_INPUT) as EditText).toDouble()
-                        if (DaoFactory.getDao(TestCaseModel::class.java).insert(testCaseModel)) {
-                            ToastUtils.showShort("添加成功")
-                            setResult(Activity.RESULT_OK)
-                            finish()
-                        } else {
-                            ToastUtils.showShort("添加失败")
-                        }
+                        intent.putExtra("model", testCaseModel)
                     }
+                    setResult(Activity.RESULT_OK, intent)
+                    finish()
                 }
             }
         })

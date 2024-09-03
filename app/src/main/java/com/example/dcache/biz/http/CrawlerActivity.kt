@@ -7,12 +7,7 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.dcache.R
-import com.example.dcache.biz.weather.WeatherService
-import com.example.dcache.model.DailyModel
 import dora.http.DoraHttp.net
-import dora.http.DoraHttp.result
-import dora.http.log.FormatLogInterceptor
-import dora.http.retrofit.RetrofitManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.BufferedReader
@@ -41,14 +36,14 @@ class CrawlerActivity : AppCompatActivity() {
                 Toast.makeText(this, "正在跑呢", Toast.LENGTH_SHORT).show()
             }
         }
-        RetrofitManager.initConfig {
-            builder.interceptors().add(FormatLogInterceptor())
-            setClient(builder.build())
-            mappingBaseUrl(
-                    WeatherService::class.java,
-                    "https://api.caiyunapp.com/v2.5/Pezyxsyn6yccBaZd/"
-            )
-        }
+//        RetrofitManager.initConfig {
+//            builder.interceptors().add(FormatLogInterceptor())
+//            setClient(builder.build())
+//            mappingBaseUrl(
+//                    WeatherService::class.java,
+//                    "https://api.caiyunapp.com/v2.5/Pezyxsyn6yccBaZd/"
+//            )
+//        }
     }
 
     @Throws(IOException::class)
@@ -68,22 +63,10 @@ class CrawlerActivity : AppCompatActivity() {
     }
 
     private suspend fun loopPrint(tvPrint: TextView, latlng: String, addr: String) {
-        val ret = result {
-            RetrofitManager.getService(WeatherService::class.java)
-                    .getDaily(latlng)
-        }
-        printLine(tvPrint, addr, ret)
-    }
-
-    private fun printLine(tvPrint: TextView, addr: String, model: DailyModel?) {
-        if (model != null) {
-            tvPrint.append("$addr:${model.result!!.daily!!.temperature!![0].min.toInt()}°/${
-                model
-                    .result!!.daily!!.temperature!![0].max.toInt()}°\n")
-        } else {
-            tvPrint.append("$addr:null\n")
-        }
-        val scrollView = findViewById<ScrollView>(R.id.scrollView)
-        scrollView.scrollTo(0, tvPrint.height)
+//        val ret = result {
+//            RetrofitManager.getService(WeatherService::class.java)
+//                    .getDaily(latlng)
+//        }
+//        printLine(tvPrint, addr, ret)
     }
 }

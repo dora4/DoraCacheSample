@@ -28,7 +28,27 @@
             android:exported="true"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="com.example.dcache.biz.orm.OrmTestCaseActivity"
+            android:name="com.example.dcache.biz.orm.BasicDataTypeTestActivity"
+            android:label="@string/cover_data_label"
+            android:exported="true"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.dcache.biz.orm.ComplexDataTypeTestActivity"
+            android:label="@string/cover_data_label"
+            android:exported="true"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.dcache.biz.orm.OrmWriteTestActivity"
+            android:label="@string/cover_data_label"
+            android:exported="true"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.dcache.biz.orm.OrmReadTestActivity"
+            android:label="@string/cover_data_label"
+            android:exported="true"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.dcache.biz.orm.OrmTestCasesActivity"
             android:label="@string/cover_data_label"
             android:exported="true"
             android:screenOrientation="portrait"/>
@@ -43,8 +63,8 @@
             android:exported="true"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="com.example.dcache.biz.weather.WeatherActivity"
-            android:label="@string/cover_weather_label"
+            android:name="com.example.dcache.biz.tutorial.TutorialActivity"
+            android:label="@string/cover_sunshine"
             android:exported="true"
             android:screenOrientation="portrait"/>
     </application>

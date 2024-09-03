@@ -3,5 +3,5 @@
     <string name="cover_pachong_label">dcache网络爬虫测试</string>
     <string name="cover_data_label">dcache数据保存测试</string>
     <string name="cover_cache_label">dcache数据缓存测试</string>
-    <string name="cover_weather_label">dcache天气案例</string>
+    <string name="cover_sunshine">每天都是晴天</string>
 </resources>
