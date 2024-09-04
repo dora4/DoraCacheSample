@@ -31,7 +31,7 @@ jobs:
 #        run: ./gradlew zipAssets
 
       - name: create-gh-release
-        if: github.repository == 'kkevsekk1/AutoX'
+        if: github.repository == 'dora4/DoraCacheSample'
         uses: taiki-e/create-gh-release-action@v1
         with:
           changelog: CHANGELOG.md
@@ -41,7 +41,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: 'build/app/signed/**'
+          files: 'app/build/outputs/apk/release/**'
           
       - name: Upload APK
         uses: actions/upload-artifact@v2
