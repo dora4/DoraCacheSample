@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "652919790238",
+    "project_id": "dora-cache-sample",
+    "storage_bucket": "dora-cache-sample.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:652919790238:android:3b17952adb0b08d4f0f98f",
+        "android_client_info": {
+          "package_name": "com.example.dcache"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDf-eplgOTTt1YGUbousPbJljTlk4kCqQw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
