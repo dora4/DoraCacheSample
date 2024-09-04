@@ -21,6 +21,3 @@ git clone https://github.com/dora4/dcache-android.git
 def latest_version = '2.4.13'
 api "com.github.dora4:dcache-android:$latest_version"
 ```
-
-### dcache-android 地址
-https://github.com/dora4/dcache-android
