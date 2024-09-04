@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - main  # 当推送到 `main` 分支时触发
-  pull_request:
-    branches:
-      - main
 
 jobs:
   build:
@@ -26,20 +23,9 @@ jobs:
 
       - name: Build with Gradle
         run: ./gradlew assembleRelease
-#
-#      - name: Package Assets
-#        run: ./gradlew zipAssets
-      - name: Create GitHub Release
-        uses: taiki-e/create-gh-release-action@v1
-          
+
       - name: Upload APK
         uses: actions/upload-artifact@v2
         with:
           name: apk
           path: app/build/outputs/apk/release/*.apk
-#
-#      - name: Upload Assets
-#        uses: actions/upload-artifact@v2
-#        with:
-#          name: assets
-#          path: app/build/outputs/assets/assets.zip
