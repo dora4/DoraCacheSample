@@ -19,19 +19,19 @@ android {
         // 与dcache版本一一对应
         versionName latest_version
     }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
     signingConfigs {
         release {
             storeFile = file("../dcache_sample.jks")
             storePassword = "123456"
             keyAlias = "key0"
             keyPassword = "123456"
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfigs.release
         }
     }
     compileOptions {
