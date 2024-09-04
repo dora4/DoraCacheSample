@@ -26,18 +26,18 @@ jobs:
 
       - name: Build with Gradle
         run: ./gradlew assembleRelease
-
-      - name: Package Assets
-        run: ./gradlew zipAssets
+#
+#      - name: Package Assets
+#        run: ./gradlew zipAssets
 
       - name: Upload APK
         uses: actions/upload-artifact@v2
         with:
           name: apk
           path: app/build/outputs/apk/release/*.apk
-
-      - name: Upload Assets
-        uses: actions/upload-artifact@v2
-        with:
-          name: assets
-          path: app/build/outputs/assets/assets.zip
+#
+#      - name: Upload Assets
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: assets
+#          path: app/build/outputs/assets/assets.zip
