@@ -31,9 +31,9 @@ class CoverActivity : AppCompatActivity() {
         rvCover.layoutManager = GridLayoutManager(this, 2)
         val covers = arrayListOf(
                 CoverModel(getString(R.string.cover_sunshine), R.drawable.icon_sun),
-                CoverModel("数据保存测试", R.drawable.icon_storage),
-                CoverModel("网络接口测试", R.drawable.icon_crawler),
-                CoverModel("数据缓存测试", R.drawable.icon_bucket)
+                CoverModel(getString(R.string.cover_data_storage), R.drawable.icon_storage),
+                CoverModel(getString(R.string.cover_api_request), R.drawable.icon_crawler),
+                CoverModel(getString(R.string.cover_data_cache), R.drawable.icon_bucket)
         )
         val adapter = CoverAdapter(covers)
         adapter.onItemClick { pos, _ ->

@@ -13,7 +13,7 @@
         android:id="@+id/titleBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:dview_title="@string/cover_data_label"
+        app:dview_title="@string/cover_data_storage"
         android:background="@color/colorPrimary"/>
 
     <RelativeLayout

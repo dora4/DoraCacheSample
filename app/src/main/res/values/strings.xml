@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">dcache sample</string>
-    <string name="cover_pachong_label">dcache网络爬虫测试</string>
-    <string name="cover_data_label">dcache数据保存测试</string>
-    <string name="cover_cache_label">dcache数据缓存测试</string>
+    <string name="cover_api_request">网络请求测试</string>
+    <string name="cover_data_storage">数据存储测试</string>
+    <string name="cover_data_cache">数据缓存测试</string>
     <string name="cover_sunshine">每天都是晴天</string>
 </resources>

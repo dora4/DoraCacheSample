@@ -24,42 +24,42 @@
         </activity>
         <activity
             android:name="com.example.dcache.http.CrawlerActivity"
-            android:label="@string/cover_pachong_label"
+            android:label="@string/cover_api_request"
             android:exported="true"
             android:screenOrientation="portrait"/>
         <activity
             android:name="com.example.dcache.orm.BasicDataTypeTestActivity"
-            android:label="@string/cover_data_label"
+            android:label="@string/cover_data_storage"
             android:exported="true"
             android:screenOrientation="portrait"/>
         <activity
             android:name="com.example.dcache.orm.ComplexDataTypeTestActivity"
-            android:label="@string/cover_data_label"
+            android:label="@string/cover_data_storage"
             android:exported="true"
             android:screenOrientation="portrait"/>
         <activity
             android:name="com.example.dcache.orm.OrmWriteTestActivity"
-            android:label="@string/cover_data_label"
+            android:label="@string/cover_data_storage"
             android:exported="true"
             android:screenOrientation="portrait"/>
         <activity
             android:name="com.example.dcache.orm.OrmReadTestActivity"
-            android:label="@string/cover_data_label"
+            android:label="@string/cover_data_storage"
             android:exported="true"
             android:screenOrientation="portrait"/>
         <activity
             android:name="com.example.dcache.orm.OrmTestCasesActivity"
-            android:label="@string/cover_data_label"
+            android:label="@string/cover_data_storage"
             android:exported="true"
             android:screenOrientation="portrait"/>
         <activity
             android:name="com.example.dcache.orm.OrmModelEditorActivity"
-            android:label="@string/cover_data_label"
+            android:label="@string/cover_data_storage"
             android:exported="true"
             android:screenOrientation="portrait"/>
         <activity
             android:name="com.example.dcache.cache.CacheActivity"
-            android:label="@string/cover_cache_label"
+            android:label="@string/cover_data_cache"
             android:exported="true"
             android:screenOrientation="portrait"/>
         <activity
