@@ -2,7 +2,7 @@
 
 ### 运行截图
 
-<img width="400" height="880" src="https://github.com/user-attachments/assets/f9b0af62-1f06-491f-8a39-79f3ef6d1fe9">
+<img width="400" height="800" src="https://github.com/user-attachments/assets/f9b0af62-1f06-491f-8a39-79f3ef6d1fe9">
 
 ### Gradle依赖配置
 
