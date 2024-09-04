@@ -16,6 +16,7 @@ import retrofit2.Callback
 
 @ListRepository
 class TestRepository(context: Context) : DoraPageDatabaseCacheRepository<TestCaseModel4>(context) {
+
     override fun createCacheHolderFactory(): DatabaseCacheHolderFactory<TestCaseModel4> {
         return DatabaseCacheHolderFactory(TestCaseModel4::class.java)
     }
