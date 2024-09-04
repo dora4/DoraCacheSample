@@ -2,8 +2,8 @@ name: Android Build
 
 on:
   push:
-    tags:
-      - '*'
+    branches:
+      - main  # 当推送到 `main` 分支时触发
 
 jobs:
   build:
@@ -23,13 +23,6 @@ jobs:
 
       - name: Build with Gradle
         run: ./gradlew assembleRelease
-
-      - name: Releasing using Hub
-        uses: sangatdesai/release-apk@main
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
-          APP_FOLDER: app
-
 
       - name: Upload APK
         uses: actions/upload-artifact@v2
