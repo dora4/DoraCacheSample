@@ -1,8 +1,9 @@
 name: Android Build
 
 on:
-  release:
-    types: [created]
+  push:
+    tags:
+      - '*'
 
 jobs:
   build:
