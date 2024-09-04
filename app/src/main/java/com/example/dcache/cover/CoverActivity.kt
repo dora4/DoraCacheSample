@@ -3,6 +3,7 @@ package com.example.dcache.cover
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -11,6 +12,7 @@ import com.example.dcache.R
 import com.example.dcache.cache.CacheActivity
 import com.example.dcache.http.CrawlerActivity
 import com.example.dcache.tutorial.TutorialActivity
+import dora.util.ApkUtils
 import dora.util.StatusBarUtils
 
 /**
@@ -22,6 +24,9 @@ class CoverActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cover)
         StatusBarUtils.setStatusBar(this, Color.WHITE, 255)
+
+        val tvVer = findViewById<TextView>(R.id.tvVer)
+        tvVer.text = "dcache版本：v${ApkUtils.getVersionName()}"
         val rvCover = findViewById<RecyclerView>(R.id.rvCover)
         rvCover.layoutManager = GridLayoutManager(this, 2)
         val covers = arrayListOf(

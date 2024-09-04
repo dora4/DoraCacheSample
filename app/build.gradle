@@ -3,6 +3,8 @@ plugins {
     id 'kotlin-android'
 }
 
+def latest_version = '2.4.13'
+
 android {
     compileSdkVersion 34
     buildToolsVersion "34.0.0"
@@ -12,7 +14,8 @@ android {
         minSdkVersion 24
         targetSdkVersion 34
         versionCode 1
-        versionName "1.0"
+        // 与dcache版本一一对应
+        versionName latest_version
     }
 
     buildTypes {
@@ -47,7 +50,6 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.11.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.8.1'
 
-    def latest_version = '2.4.13'
     api "com.github.dora4:dcache-android:$latest_version"
 //    api (name: "dcache-release", ext: 'aar')
     implementation 'com.github.dora4:dora:1.2.24'

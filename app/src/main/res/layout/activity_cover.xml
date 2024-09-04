@@ -12,7 +12,6 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="50dp"
         android:layout_alignParentBottom="true"
-        android:text="dcache版本：v2.4.13"
         android:textColor="@color/black"
         android:gravity="center"
         android:padding="10dp"
