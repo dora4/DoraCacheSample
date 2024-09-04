@@ -38,6 +38,8 @@ jobs:
             自动生成的 Release Notes.
           draft: false
           prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
       - name: Upload APK
         uses: actions/upload-artifact@v2
