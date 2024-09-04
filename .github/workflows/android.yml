@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main  # 当推送到 `main` 分支时触发
+    tags:
+      - '*'
 
 jobs:
   build:
@@ -23,14 +25,19 @@ jobs:
 
       - name: Build with Gradle
         run: ./gradlew assembleRelease
-
-      - name: Publish to Github Release
+        
+      - name: create-gh-release
         if: github.repository == 'dora4/DoraCacheSample'
         uses: taiki-e/create-gh-release-action@v1
         with:
           changelog: CHANGELOG.md
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
+      - name: create-release
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: 'build/outputs/apk/release/**'
 
       - name: Upload APK
         uses: actions/upload-artifact@v2
