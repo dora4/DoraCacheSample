@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<com.example.dcache.biz.orm.SlidingItem
+<com.example.dcache.orm.SlidingItem
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/mSwipeRemoveLayout"
@@ -50,4 +50,4 @@
         </LinearLayout>
 
     </LinearLayout>
-</com.example.dcache.biz.orm.SlidingItem>
+</com.example.dcache.orm.SlidingItem>

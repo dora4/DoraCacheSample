@@ -8,7 +8,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    tools:context=".biz.orm.BasicDataTypeTestActivity">
+    tools:context=".orm.BasicDataTypeTestActivity">
     <dora.widget.DoraTitleBar
         android:id="@+id/titleBar"
         android:layout_width="match_parent"

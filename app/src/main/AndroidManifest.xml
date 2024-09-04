@@ -14,7 +14,7 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:theme="@style/Theme.DoraCacheSample"
         tools:targetApi="n">
-        <activity android:name="com.example.dcache.biz.cover.CoverActivity"
+        <activity android:name="com.example.dcache.cover.CoverActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,47 +23,47 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.dcache.biz.http.CrawlerActivity"
+            android:name="com.example.dcache.http.CrawlerActivity"
             android:label="@string/cover_pachong_label"
             android:exported="true"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="com.example.dcache.biz.orm.BasicDataTypeTestActivity"
+            android:name="com.example.dcache.orm.BasicDataTypeTestActivity"
             android:label="@string/cover_data_label"
             android:exported="true"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="com.example.dcache.biz.orm.ComplexDataTypeTestActivity"
+            android:name="com.example.dcache.orm.ComplexDataTypeTestActivity"
             android:label="@string/cover_data_label"
             android:exported="true"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="com.example.dcache.biz.orm.OrmWriteTestActivity"
+            android:name="com.example.dcache.orm.OrmWriteTestActivity"
             android:label="@string/cover_data_label"
             android:exported="true"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="com.example.dcache.biz.orm.OrmReadTestActivity"
+            android:name="com.example.dcache.orm.OrmReadTestActivity"
             android:label="@string/cover_data_label"
             android:exported="true"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="com.example.dcache.biz.orm.OrmTestCasesActivity"
+            android:name="com.example.dcache.orm.OrmTestCasesActivity"
             android:label="@string/cover_data_label"
             android:exported="true"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="com.example.dcache.biz.orm.OrmModelEditorActivity"
+            android:name="com.example.dcache.orm.OrmModelEditorActivity"
             android:label="@string/cover_data_label"
             android:exported="true"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="com.example.dcache.biz.cache.CacheActivity"
+            android:name="com.example.dcache.cache.CacheActivity"
             android:label="@string/cover_cache_label"
             android:exported="true"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="com.example.dcache.biz.tutorial.TutorialActivity"
+            android:name="com.example.dcache.tutorial.TutorialActivity"
             android:label="@string/cover_sunshine"
             android:exported="true"
             android:screenOrientation="portrait"/>

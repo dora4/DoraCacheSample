@@ -1,53 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/scrollView">
+    android:layout_height="match_parent"
+    android:gravity="center"
+    tools:context=".cache.CacheActivity">
+    <dora.widget.DoraTitleBar
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:dview_title="@string/cover_cache_label"
+        android:background="@color/colorPrimary"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="15dp"
         android:orientation="vertical"
-        android:padding="5dp">
+        android:background="@color/white">
+
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="断网也可以读取离线数据哦~"
-            android:textStyle="bold"
-            android:layout_margin="5dp"/>
-        <TextView
-            android:id="@+id/tvMemoryCache"
+            android:id="@+id/tvStart"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:text="weather:none\n"
-            android:layout_margin="5dp"/>
+            android:text="开始缓存"
+            android:textColor="@color/colorPrimary"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textSize="14sp"
+            android:background="@drawable/shape_theme_color_border" />
         <TextView
-            android:id="@+id/tvCacheRealtime"
+            android:id="@+id/tvReset"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:text="realtime:none\n"
-            android:layout_margin="5dp"/>
-        <TextView
-            android:id="@+id/tvCacheMinutely"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="minutely:none\n"
-            android:layout_margin="5dp"/>
-        <TextView
-            android:id="@+id/tvCacheHourly"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:text="hourly:none\n"
-            android:layout_margin="5dp"/>
-        <TextView
-            android:id="@+id/tvCacheDaily"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:text="daily::none\n"
-            android:layout_margin="5dp"/>
+            android:text="清空缓存"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textSize="14sp"
+            android:background="@drawable/shape_theme_color_border" />
     </LinearLayout>
-</ScrollView>
+
+    <dora.widget.DoraEmptyLayout
+        android:id="@+id/emptyLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <dora.widget.pull.SwipeLayout
+            android:id="@+id/swipeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <include layout="@layout/layout_swipe_layout_header" />
+
+            <dora.widget.pull.PullableRecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorPanelBg"
+                app:dview_canPullDown="false"
+                app:dview_canPullUp="true"/>
+
+            <include layout="@layout/layout_swipe_layout_footer" />
+        </dora.widget.pull.SwipeLayout>
+    </dora.widget.DoraEmptyLayout>
+</LinearLayout>

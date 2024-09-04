@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.recyclerview.widget.RecyclerView
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/rvCover"/>
+    android:background="@color/white">
+    <TextView
+        android:id="@+id/tvVer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="50dp"
+        android:layout_alignParentBottom="true"
+        android:text="dcache版本：v2.4.13"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:padding="10dp"
+        android:textSize="16sp"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/rvCover"
+        android:layout_above="@id/tvVer"/>
+</RelativeLayout>

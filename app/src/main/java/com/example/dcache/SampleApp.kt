@@ -1,11 +1,12 @@
 package com.example.dcache
 
 import android.app.Application
-import com.example.dcache.biz.http.TestService
-import com.example.dcache.biz.orm.TestCaseModel
-import com.example.dcache.biz.orm.TestCaseModel2
-import com.example.dcache.biz.orm.TestCaseModel3
-import com.example.dcache.biz.tutorial.Tutorial
+import com.example.dcache.http.TestService
+import com.example.dcache.orm.TestCaseModel
+import com.example.dcache.orm.TestCaseModel2
+import com.example.dcache.orm.TestCaseModel3
+import com.example.dcache.orm.TestCaseModel4
+import com.example.dcache.tutorial.Tutorial
 import dora.db.Orm
 import dora.db.OrmConfig
 import dora.http.retrofit.RetrofitManager
@@ -24,7 +25,8 @@ class SampleApp : Application() {
                 .tables(Tutorial::class.java,
                     TestCaseModel::class.java,
                     TestCaseModel2::class.java,
-                    TestCaseModel3::class.java)
+                    TestCaseModel3::class.java,
+                    TestCaseModel4::class.java)
                 .version(1)
                 .build())
         RetrofitManager.initConfig {
