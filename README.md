@@ -2,7 +2,7 @@
 
 ### 运行截图
 
-![avatar](https://github.com/dora4/DoraCacheSample/blob/main/art/dcache.png)
+![1725392638139404](https://github.com/user-attachments/assets/f9b0af62-1f06-491f-8a39-79f3ef6d1fe9)
 
 ### Gradle依赖配置
 
@@ -24,6 +24,3 @@ api "com.github.dora4:dcache-android:$latest_version"
 
 ### dcache-android 地址
 https://github.com/dora4/dcache-android
-
-
-Tip：BIP39助记词安全保存推荐使用[【隐私保险箱】](https://dorachat.oss-cn-hongkong.aliyuncs.com/Dora_Box_1.12.apk)🎉
