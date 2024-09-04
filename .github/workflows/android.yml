@@ -33,15 +33,6 @@ jobs:
 #        run: ./gradlew zipAssets
       - name: Create GitHub Release
         uses: taiki-e/create-gh-release-action@v1
-        with:
-          tag_name: ${{ github.ref }} # 使用推送的标签作为版本号
-          release_name: Release ${{ github.ref }}
-          body: |
-            自动生成的 Release Notes.
-          draft: false
-          prerelease: false
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
       - name: Upload APK
         uses: actions/upload-artifact@v2
