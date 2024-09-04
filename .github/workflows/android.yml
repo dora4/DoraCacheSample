@@ -24,11 +24,13 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew assembleRelease
 
-      - name: Releasing using Hub
-        uses: sangatdesai/release-apk@main
+      - name: Publish to Github Release
+        if: github.repository == 'dora4/DoraCacheSample'
+        uses: taiki-e/create-gh-release-action@v1
+        with:
+          changelog: CHANGELOG.md
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
-          APP_FOLDER: app
 
       - name: Upload APK
         uses: actions/upload-artifact@v2
