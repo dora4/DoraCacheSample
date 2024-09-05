@@ -2,7 +2,7 @@
 
 ### 运行效果
 
-![avatar](https://dorachat.oss-cn-hongkong.aliyuncs.com/SVID_20240904_225619_1.gif)
+![avatar](https://github.com/dora4/DoraCacheSample/blob/main/art/get_started.gif)
 
 ### Gradle依赖配置
 
