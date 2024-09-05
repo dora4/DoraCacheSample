@@ -1,8 +1,8 @@
 # DoraCacheSample
 
-### 运行截图
+### 运行效果
 
-<img width="400" height="860" src="https://github.com/user-attachments/assets/f9b0af62-1f06-491f-8a39-79f3ef6d1fe9">
+<img width="400" height="860" src="https://dorachat.oss-cn-hongkong.aliyuncs.com/SVID_20240904_225619_1.gif">
 
 ### Gradle依赖配置
 
