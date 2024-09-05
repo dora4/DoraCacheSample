@@ -2,7 +2,7 @@
 
 ### 运行效果
 
-<img width="400" height="860" src="https://dorachat.oss-cn-hongkong.aliyuncs.com/SVID_20240904_225619_1.gif">
+![avatar](https://dorachat.oss-cn-hongkong.aliyuncs.com/SVID_20240904_225619_1.gif)
 
 ### Gradle依赖配置
 
