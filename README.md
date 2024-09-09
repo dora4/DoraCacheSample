@@ -4,6 +4,10 @@
 
 ![avatar](https://github.com/dora4/DoraCacheSample/blob/main/art/get_started.gif)
 
+### App下载
+
+[Android](https://www.pgyer.com/Qiiq8emN)
+
 ### Gradle依赖配置
 
 将dcache-android克隆到根目录下。
