@@ -8,7 +8,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Setup output
+      - name: Set up output
         id: vars
         run: |
           echo "short_ref=${GITHUB_REF#refs/*/}" >> $GITHUB_OUTPUT
@@ -16,12 +16,12 @@ jobs:
       - name: Checkout
         id: check
         uses: actions/checkout@v4
-      - name: Setup JDK 17
+      - name: Set up JDK
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 17
-      - name: Setup Android SDK
+      - name: Set up Android SDK
         uses: android-actions/setup-android@v3
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v3
