@@ -1,4 +1,4 @@
-name: Android CI build
+name: Android CI Build
 on:
 #  workflow_dispatch:
   push:
