@@ -1,0 +1,41 @@
+name: Android CI build
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - '*'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set output
+        id: vars
+        run: |
+          echo "short_ref=${GITHUB_REF#refs/*/}" >> $GITHUB_OUTPUT
+          echo "tag=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+      - name: checkout
+        id: check
+        uses: actions/checkout@v4
+      - name: set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v3
+
+      - name: Build App
+        run: |
+          ./gradlew app:assembleRelease
+      - name: create-gh-release
+        if: github.repository == 'dora4/DoraCacheSample'
+        uses: taiki-e/create-gh-release-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: create-release
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: 'build/app/outputs/apk/release/**'
