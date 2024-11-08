@@ -80,6 +80,13 @@ class OrmModelEditorActivity : AppCompatActivity() {
                 )
             )
             .addMenu(
+                InputMenuPanelItem(
+                    title = "字节型",
+                    hint = "输入byte值",
+                    content = model?.byteVal?.toString() ?: "0"
+                )
+            )
+            .addMenu(
                 ButtonMenuPanelItem(marginTop = DensityUtils.DP10, menuName = "save", text = "保存",
                 textColor = ContextCompat.getColor(this, R.color.colorPrimary))
             )
@@ -113,6 +120,9 @@ class OrmModelEditorActivity : AppCompatActivity() {
                         testCaseModel?.doubleVal = ViewUtils.getText(menuPanel.getViewByPosition(6,
                             InputMenuPanelItem.ID_EDIT_TEXT_INPUT) as EditText
                         ).toDouble()
+                        testCaseModel?.byteVal = ViewUtils.getText(menuPanel.getViewByPosition(7,
+                            InputMenuPanelItem.ID_EDIT_TEXT_INPUT) as EditText
+                        ).toByte()
                         intent.putExtra("model", testCaseModel)
                     } else {
                         val testCaseModel = TestCaseModel(menuName = MenuPanelItem.generateMenuName())
@@ -129,6 +139,8 @@ class OrmModelEditorActivity : AppCompatActivity() {
                             InputMenuPanelItem.ID_EDIT_TEXT_INPUT) as EditText).toFloat()
                         testCaseModel.doubleVal = ViewUtils.getText(menuPanel.getViewByPosition(6,
                             InputMenuPanelItem.ID_EDIT_TEXT_INPUT) as EditText).toDouble()
+                        testCaseModel.byteVal = ViewUtils.getText(menuPanel.getViewByPosition(7,
+                            InputMenuPanelItem.ID_EDIT_TEXT_INPUT) as EditText).toByte()
                         intent.putExtra("model", testCaseModel)
                     }
                     setResult(Activity.RESULT_OK, intent)

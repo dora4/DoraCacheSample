@@ -27,7 +27,7 @@ class SampleApp : Application() {
                     TestCaseModel2::class.java,
                     TestCaseModel3::class.java,
                     TestCaseModel4::class.java)
-                .version(1)
+                .version(2)
                 .build())
         RetrofitManager.initConfig {
             okhttp {

@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.widget.TextView
 import com.example.dcache.R
 import dora.db.dao.DaoFactory
+import dora.util.IntentUtils
 import dora.util.ToastUtils
 import dora.widget.panel.MenuPanel
 import dora.widget.panel.MenuPanelItemGroup
@@ -30,7 +31,7 @@ class ComplexDataTypeTestActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK) {
-            val model = data?.getSerializableExtra("model") as TestCaseModel
+            val model = data?.let { IntentUtils.getSerializableExtra(it, "model") } as TestCaseModel
             if (requestCode == 0) {
                 val model3 = TestCaseModel3()
                 model3.model = model
