@@ -4,7 +4,10 @@ import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.dcache.R
+import dora.db.async.OrmTask
+import dora.db.async.OrmTaskListener
 import dora.db.dao.DaoFactory
+import dora.util.LogUtils
 
 /**
  * 使用教程，希望使用了本框架的程序缘每天都是☀阳光灿烂☀，写代码零BUG或少BUG，早点下班，多陪家人。
@@ -42,7 +45,19 @@ class TutorialActivity : AppCompatActivity() {
                 "这首诗通过写“春眠不觉晓”传达了一种春日的慵懒和愉悦，鸟鸣声更增添了轻快的气氛。\n" +
                 "\n" +
                 "这些诗词都充满了轻松愉快的情感，让人感受到自然美景和生活的美好。"))
-        val tutorial = DaoFactory.getDao(Tutorial::class.java).selectOne()
-        tvTutorial.text = tutorial?.content
+        DaoFactory.getDao(Tutorial::class.java).selectOneAsync(object : OrmTaskListener<Tutorial> {
+
+            override fun onCompleted(task: OrmTask<Tutorial>) {
+                runOnUiThread {
+                    // 获取返回值
+                    val tutorial = task.result(Tutorial::class.java)
+                    tvTutorial.text = tutorial.content
+                }
+            }
+
+            override fun onFailed(task: OrmTask<Tutorial>, e: Exception) {
+                LogUtils.e(e.toString())
+            }
+        })
     }
 }

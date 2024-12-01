@@ -5,7 +5,7 @@ plugins {
     id 'com.google.firebase.crashlytics'
 }
 
-def latest_version = '2.5.18'
+def latest_version = '3.0.14'
 
 android {
     compileSdkVersion 34
@@ -61,7 +61,7 @@ dependencies {
 
     api "com.github.dora4:dcache-android:$latest_version"
 //    api (name: "dcache-debug", ext: 'aar')
-    implementation 'com.github.dora4:dora:1.2.29'
+    implementation 'com.github.dora4:dora:1.2.32'
     implementation("com.github.dora4:dora-brvah-support:1.2")
     implementation 'com.github.dora4:dview-titlebar:1.37'
     implementation 'com.github.dora4:dview-toggle-button:1.3'
