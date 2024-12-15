@@ -5,7 +5,7 @@ plugins {
     id 'com.google.firebase.crashlytics'
 }
 
-def latest_version = '3.1.6'
+def latest_version = '3.1.7'
 
 android {
     compileSdkVersion 34

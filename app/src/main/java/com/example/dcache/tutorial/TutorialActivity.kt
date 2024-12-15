@@ -7,6 +7,7 @@ import com.example.dcache.R
 import dora.db.async.OrmTask
 import dora.db.async.OrmTaskListener
 import dora.db.dao.DaoFactory
+import dora.db.exception.OrmTaskException
 import dora.util.LogUtils
 
 /**
@@ -55,7 +56,7 @@ class TutorialActivity : AppCompatActivity() {
                 }
             }
 
-            override fun onFailed(task: OrmTask<Tutorial>, e: Exception) {
+            override fun onFailed(task: OrmTask<Tutorial>, e: OrmTaskException) {
                 LogUtils.e(e.toString())
             }
         })
