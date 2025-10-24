@@ -8,6 +8,8 @@
 
 [Android](https://www.pgyer.com/Qiiq8emN)
 
+![0](https://github.com/user-attachments/assets/ce6f3af2-a032-41ad-9bf0-9277f7398d82)
+
 ### Gradle依赖配置
 
 将dcache-android克隆到根目录下。
